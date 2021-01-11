@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4B3CC8F25ACB10C0084C295 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3CC8E25ACB10C0084C295 /* BookDetailsViewController.swift */; };
 		C4EC479225A5EF20007B55DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC479125A5EF20007B55DB /* AppDelegate.swift */; };
 		C4EC479425A5EF20007B55DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC479325A5EF20007B55DB /* SceneDelegate.swift */; };
 		C4EC479625A5EF20007B55DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC479525A5EF20007B55DB /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4B3CC8E25ACB10C0084C295 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		C4EC478E25A5EF20007B55DB /* ReadToday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadToday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4EC479125A5EF20007B55DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4EC479325A5EF20007B55DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				C4EC479525A5EF20007B55DB /* ViewController.swift */,
+				C4B3CC8E25ACB10C0084C295 /* BookDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			files = (
 				C4EC47AC25AC83B4007B55DB /* BookTableViewCell.swift in Sources */,
 				C4EC479625A5EF20007B55DB /* ViewController.swift in Sources */,
+				C4B3CC8F25ACB10C0084C295 /* BookDetailsViewController.swift in Sources */,
 				C4EC479225A5EF20007B55DB /* AppDelegate.swift in Sources */,
 				C4EC479425A5EF20007B55DB /* SceneDelegate.swift in Sources */,
 			);

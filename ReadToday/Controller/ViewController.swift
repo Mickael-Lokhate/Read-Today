@@ -17,14 +17,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        booksTableView.delegate = self
         booksTableView.dataSource = self
+        booksTableView.delegate = self
         
         //Table view design
         booksTableView.separatorStyle = .none
         booksTableView.showsVerticalScrollIndicator = false
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! BookDetailsViewController
+        
+        if let indexPath = booksTableView.indexPathForSelectedRow {
+            destinationVC.selectedBook = books[indexPath.row]
+        }
+    }
 
 }
 
@@ -53,6 +60,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "GoToDetails", sender: self)
+    }
 }
-
