@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fcg-0j-wEC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Ma bibliothèque-->
+        <scene sceneID="4x5-fW-EqP">
+            <objects>
+                <tableViewController id="7me-QX-p81" customClass="ViewController" customModule="ReadToday" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tos-g4-YJn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" id="3j6-f4-Ssd" customClass="BookTableViewCell" customModule="ReadToday" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3j6-f4-Ssd" id="yEP-Ig-U26">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4L-DZ-pyi">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lève-toi et code" translatesAutoresizingMaskIntoConstraints="NO" id="rUD-J1-7BI">
+                                                    <rect key="frame" x="8" y="0.0" width="60" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="tLr-Of-WAj"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lève-toi et code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09J-Kf-hiZ">
+                                                    <rect key="frame" x="73" y="0.0" width="336" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="de Rabbin des bois" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnR-pA-OBo">
+                                                    <rect key="frame" x="75" y="24" width="334" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="114/114 pages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bg-9h-mXR">
+                                                    <rect key="frame" x="73" y="77.5" width="336" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="DarkPurple"/>
+                                            <constraints>
+                                                <constraint firstItem="rUD-J1-7BI" firstAttribute="leading" secondItem="q4L-DZ-pyi" secondAttribute="leadingMargin" id="4Ah-VC-EHV"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3bg-9h-mXR" secondAttribute="bottom" id="5HW-hV-U15"/>
+                                                <constraint firstAttribute="trailing" secondItem="09J-Kf-hiZ" secondAttribute="trailing" constant="5" id="6dY-FU-axh"/>
+                                                <constraint firstAttribute="trailing" secondItem="3bg-9h-mXR" secondAttribute="trailing" constant="5" id="AP2-x3-Jle"/>
+                                                <constraint firstItem="rUD-J1-7BI" firstAttribute="centerY" secondItem="q4L-DZ-pyi" secondAttribute="centerY" id="Fyw-dA-cdL"/>
+                                                <constraint firstItem="rUD-J1-7BI" firstAttribute="top" secondItem="q4L-DZ-pyi" secondAttribute="top" id="HDm-gq-SqZ"/>
+                                                <constraint firstItem="09J-Kf-hiZ" firstAttribute="leading" secondItem="rUD-J1-7BI" secondAttribute="trailing" constant="5" id="HWa-Db-Y02"/>
+                                                <constraint firstAttribute="trailing" secondItem="WnR-pA-OBo" secondAttribute="trailing" constant="5" id="K6m-co-tJe"/>
+                                                <constraint firstItem="09J-Kf-hiZ" firstAttribute="top" secondItem="q4L-DZ-pyi" secondAttribute="top" id="ZrU-2n-Ft8"/>
+                                                <constraint firstItem="WnR-pA-OBo" firstAttribute="leading" secondItem="rUD-J1-7BI" secondAttribute="trailing" constant="7" id="hYM-Dk-Um5"/>
+                                                <constraint firstAttribute="bottom" secondItem="rUD-J1-7BI" secondAttribute="bottom" id="n0Z-4Q-Z70"/>
+                                                <constraint firstItem="WnR-pA-OBo" firstAttribute="top" secondItem="09J-Kf-hiZ" secondAttribute="bottom" id="qf0-2z-hIu"/>
+                                                <constraint firstItem="3bg-9h-mXR" firstAttribute="leading" secondItem="rUD-J1-7BI" secondAttribute="trailing" constant="5" id="sJT-gS-LGd"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="q4L-DZ-pyi" secondAttribute="trailing" id="51L-zc-DmM"/>
+                                        <constraint firstAttribute="bottom" secondItem="q4L-DZ-pyi" secondAttribute="bottom" id="71r-3M-K4i"/>
+                                        <constraint firstItem="q4L-DZ-pyi" firstAttribute="top" secondItem="yEP-Ig-U26" secondAttribute="top" id="egW-BW-gz3"/>
+                                        <constraint firstItem="q4L-DZ-pyi" firstAttribute="leading" secondItem="yEP-Ig-U26" secondAttribute="leading" id="fzu-pZ-yac"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bookAuthorLabel" destination="WnR-pA-OBo" id="aNX-vB-rdz"/>
+                                    <outlet property="bookImageView" destination="rUD-J1-7BI" id="v81-6w-a5H"/>
+                                    <outlet property="bookPagesLabel" destination="3bg-9h-mXR" id="Jp7-Fu-XMp"/>
+                                    <outlet property="bookTitleLabel" destination="09J-Kf-hiZ" id="kQt-AB-O2j"/>
+                                    <outlet property="bookView" destination="q4L-DZ-pyi" id="5ap-aF-Zaj"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7me-QX-p81" id="LdI-Gk-Nek"/>
+                            <outlet property="delegate" destination="7me-QX-p81" id="I2p-YN-eco"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Ma bibliothèque" id="Qu0-zH-jqr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XwK-RL-Xfm">
+                            <connections>
+                                <segue destination="mmB-K0-mLf" kind="show" id="Hb1-vc-xL4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="booksTableView" destination="Tos-g4-YJn" id="8Dl-AC-b8H"/>
+                        <segue destination="oa1-9G-xzH" kind="show" identifier="goToDetails" id="RmM-Ou-6Rs"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g4y-ug-6VL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-500.00000000000006" y="66.964285714285708"/>
+        </scene>
+        <!--Ajouter un livre-->
+        <scene sceneID="qDk-wO-6fA">
+            <objects>
+                <viewController id="mmB-K0-mLf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LzQ-50-VvR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gfy-Bb-fhX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ajouter un livre" id="EHj-ze-zFD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="7ec-hb-KCD"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2nC-mj-h0s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="488" y="466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="350-3c-A6f">
+            <objects>
+                <navigationController id="fcg-0j-wEC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="opY-Ow-WPm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7me-QX-p81" kind="relationship" relationship="rootViewController" id="SV2-Yz-wRz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f4J-h5-ed3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1388" y="67"/>
+        </scene>
+        <!--Je suis le titre-->
+        <scene sceneID="ZFT-48-Dk0">
+            <objects>
+                <viewController id="oa1-9G-xzH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8i1-o4-vgY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eKg-fw-Put"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Je suis le titre" id="kJi-hj-exK">
+                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="V45-3C-cPl"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NC3-GY-4Vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487" y="-363"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Lève-toi et code" width="396" height="629"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <namedColor name="DarkPurple">
+            <color red="0.57248461250000005" green="0.48085659739999997" blue="0.94906848669999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
