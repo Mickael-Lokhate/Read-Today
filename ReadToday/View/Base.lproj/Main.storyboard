@@ -96,7 +96,7 @@
                     <navigationItem key="navigationItem" title="Ma bibliothèque" id="Qu0-zH-jqr">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XwK-RL-Xfm">
                             <connections>
-                                <segue destination="mmB-K0-mLf" kind="show" id="Hb1-vc-xL4"/>
+                                <segue destination="mmB-K0-mLf" kind="show" identifier="GoToAdd" id="d8z-Bk-2lj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -112,7 +112,7 @@
         <!--Ajouter un livre-->
         <scene sceneID="qDk-wO-6fA">
             <objects>
-                <viewController id="mmB-K0-mLf" sceneMemberID="viewController">
+                <viewController id="mmB-K0-mLf" customClass="AddBookViewController" customModule="ReadToday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LzQ-50-VvR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

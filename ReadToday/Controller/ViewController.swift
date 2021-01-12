@@ -30,13 +30,14 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! BookDetailsViewController
-        
-        if let indexPath = booksTableView.indexPathForSelectedRow {
-            destinationVC.selectedBook = books[indexPath.row]
+        if segue.identifier == "GoToDetails" {
+            let destinationVC = segue.destination as! BookDetailsViewController
+            
+            if let indexPath = booksTableView.indexPathForSelectedRow {
+                destinationVC.selectedBook = books[indexPath.row]
+            }
         }
     }
-
 }
 
 extension ViewController: UITableViewDataSource {
