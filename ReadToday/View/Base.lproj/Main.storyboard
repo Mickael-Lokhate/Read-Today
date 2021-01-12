@@ -143,7 +143,7 @@
             </objects>
             <point key="canvasLocation" x="-1388" y="67"/>
         </scene>
-        <!--Léve-toi et code-->
+        <!--Lève-toi et code-->
         <scene sceneID="ZFT-48-Dk0">
             <objects>
                 <viewController id="oa1-9G-xzH" customClass="BookDetailsViewController" customModule="ReadToday" customModuleProvider="target" sceneMemberID="viewController">
@@ -294,7 +294,7 @@
                             <constraint firstItem="3pf-9A-cJk" firstAttribute="leading" secondItem="eKg-fw-Put" secondAttribute="leading" id="qNw-Ch-3UN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Léve-toi et code" id="kJi-hj-exK">
+                    <navigationItem key="navigationItem" title="Lève-toi et code" id="kJi-hj-exK">
                         <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="V45-3C-cPl"/>
                     </navigationItem>
                     <connections>

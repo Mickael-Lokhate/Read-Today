@@ -14,9 +14,11 @@ class BookDetailsViewController: UIViewController {
     @IBOutlet weak var toReadLabel: UILabel!
     @IBOutlet weak var endOfReadingLabel: UILabel!
     
-    var selectedBook: String?
+    var selectedBook: Book?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
 }
