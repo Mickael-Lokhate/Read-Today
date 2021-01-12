@@ -301,6 +301,8 @@
                         <outlet property="bookImageView" destination="7jE-kH-PPD" id="6rA-AZ-rZ8"/>
                         <outlet property="endOfReadingLabel" destination="DrV-BT-Bbx" id="UOn-Gd-Vak"/>
                         <outlet property="haveReadLabel" destination="uyu-cs-hHC" id="rEd-eS-x06"/>
+                        <outlet property="pickerViewPagesPerFrequency" destination="CD8-0H-Eed" id="13S-id-Jhz"/>
+                        <outlet property="pickerViewReadingFrequency" destination="fIy-Qb-ov1" id="SrJ-8J-Jfi"/>
                         <outlet property="toReadLabel" destination="RpH-gx-XcX" id="vNB-FG-eJK"/>
                     </connections>
                 </viewController>

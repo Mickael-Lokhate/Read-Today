@@ -15,4 +15,7 @@ struct Book {
     let readingFrequency: String
     let pagesToReadByFrequency: Int
     let dateOfEndReading: Date
+    var pagesLeftToRead: Int {
+        return totalPages - pagesAlreadyRead
+    }
 }
