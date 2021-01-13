@@ -6,16 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
     @IBOutlet var booksTableView: UITableView!
     
-    private var leveToiEtCode = Book(title: "Lève-toi et code", author: "Rabbin des bois", totalPages: 114, pagesAlreadyRead: 114, readingFrequency: "tous les jours", pagesToReadByFrequency: 5, dateOfEndReading: Date(timeIntervalSince1970: 5689))
-    private var hungerGames = Book(title: "The Hunger Games", author: "Rabbin des bois", totalPages: 167, pagesAlreadyRead: 103, readingFrequency: "une fois par mois", pagesToReadByFrequency: 20, dateOfEndReading: Date(timeIntervalSince1970: 645098))
-    private var harryPotter = Book(title: "Harry Potter", author: "J.K. Rowling", totalPages: 221, pagesAlreadyRead: 34, readingFrequency: "tous les jours", pagesToReadByFrequency: 14, dateOfEndReading: Date(timeIntervalSince1970: 56919))
-    
     internal var books: [Book] = []
+    private let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +25,7 @@ class ViewController: UIViewController {
         booksTableView.separatorStyle = .none
         booksTableView.showsVerticalScrollIndicator = false
         
-        books = [leveToiEtCode, hungerGames, harryPotter]
+        getDataFromFirestore(with: db)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,6 +36,40 @@ class ViewController: UIViewController {
                 destinationVC.selectedBook = books[indexPath.row]
             }
         }
+    }
+    
+    private func getDataFromFirestore(with db: Firestore) {
+        db.collection("books").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents : \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.addBookToArray(document.data())
+                }
+            }
+            
+        }
+    }
+    
+    private func addBookToArray(_ data: [String: Any]) {
+        let title = data["title"] as! String
+        let author = data["author"] as! String
+        let totalPages = data["totalPage"] as! Int
+        let pagesAlreadyRead = data["pagesAlreadyRead"] as! Int
+        let readingFrequency = data["readingFrequency"] as! String
+        let pagesPerFrequency = data["pagesPerFrequency"] as! Int
+        let tmpDate = data["dateOfEndReading"] as! Timestamp
+        let dateOfEndReading = Date(timeIntervalSince1970: TimeInterval(tmpDate.seconds))
+ 
+        
+        let book = Book(title: title,
+                        author: author,
+                        totalPages: totalPages,
+                        pagesAlreadyRead: pagesAlreadyRead,
+                        readingFrequency: readingFrequency,
+                        pagesToReadByFrequency: pagesPerFrequency,
+                        dateOfEndReading: dateOfEndReading)
+        books.append(book)
     }
 }
 
