@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Book {
+internal struct Book {
     let title: String
     let author: String
     let totalPages: Int

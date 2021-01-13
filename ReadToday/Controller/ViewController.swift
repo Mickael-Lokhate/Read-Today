@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     private var hungerGames = Book(title: "The Hunger Games", author: "Rabbin des bois", totalPages: 167, pagesAlreadyRead: 103, readingFrequency: "une fois par mois", pagesToReadByFrequency: 20, dateOfEndReading: Date(timeIntervalSince1970: 645098))
     private var harryPotter = Book(title: "Harry Potter", author: "J.K. Rowling", totalPages: 221, pagesAlreadyRead: 34, readingFrequency: "tous les jours", pagesToReadByFrequency: 14, dateOfEndReading: Date(timeIntervalSince1970: 56919))
     
-    private var books: [Book] = []
+    internal var books: [Book] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,3 +70,4 @@ extension ViewController: UITableViewDelegate {
         performSegue(withIdentifier: "GoToDetails", sender: self)
     }
 }
+

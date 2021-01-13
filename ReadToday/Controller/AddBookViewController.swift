@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddBookViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class AddBookViewController: UIViewController {
     @IBOutlet weak var pagesPerFrequencyTextField: UITextField!
     @IBOutlet weak var datePickerView: UIDatePicker!
     
+    let db = Firestore.firestore()
     private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois", "Chaques semaines"]
     
     override func viewDidLoad() {
@@ -24,6 +26,14 @@ class AddBookViewController: UIViewController {
         
         frequencyPickerView.delegate = self
         frequencyPickerView.dataSource = self
+    }
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Annuler l'ajout", message: "Êtes-vous sûr de vouloir annuler l'ajout d'un livre ?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Oui", style: .default, handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Non", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
@@ -45,7 +55,9 @@ class AddBookViewController: UIViewController {
                                                                readingFrequency: dataReadingFrequency[rowFrequency],
                                                                pagesToReadByFrequency: Int(pagesPerFrequency)!,
                                                                dateOfEndReading: datePickerView.date)
-                                            print(newBook)
+                                            addToDatabase(newBook, with: db)
+                                            
+                                            navigationController?.popViewController(animated: true)
                                         } else {
                                             pagesPerFrequencyTextField.backgroundColor = .systemRed
                                         }
@@ -89,4 +101,18 @@ extension AddBookViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataReadingFrequency[row]
     }
+}
+
+func addToDatabase(_ newBook: Book, with db: Firestore) {
+    var dbRef: DocumentReference? = nil
+    
+    dbRef = db.collection("books").addDocument(data: [
+        "title": newBook.title,
+        "author": newBook.author,
+        "totalPage": newBook.totalPages,
+        "pagesAlreadyRead": newBook.pagesAlreadyRead,
+        "readingFrequency": newBook.readingFrequency,
+        "pagesPerFrequency": newBook.pagesToReadByFrequency,
+        "dateOfEndReading": newBook.dateOfEndReading
+    ])
 }
