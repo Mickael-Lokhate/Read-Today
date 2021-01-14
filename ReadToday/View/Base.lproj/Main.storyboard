@@ -226,7 +226,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="f0Y-iW-H1j" userLabel="Image + title">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="263"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="TW3-Om-5wR">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="250"/>
@@ -272,55 +272,55 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zxb-zE-4JS" userLabel="Parameters">
-                                        <rect key="frame" x="0.0" y="268" width="414" height="511.5"/>
+                                        <rect key="frame" x="0.0" y="263" width="414" height="517"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paramètres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-8c-yTm">
-                                                <rect key="frame" x="0.0" y="0.0" width="129.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="129.5" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Jg3-mB-hQe" userLabel="First">
-                                                <rect key="frame" x="0.0" y="37" width="414" height="231.5"/>
+                                                <rect key="frame" x="0.0" y="36.5" width="414" height="227.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Je veux lire :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfg-XT-c27">
-                                                        <rect key="frame" x="0.0" y="0.0" width="94.5" height="231.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="94.5" height="227.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDN-SY-qPz">
-                                                        <rect key="frame" x="94.5" y="0.0" width="319.5" height="231.5"/>
+                                                        <rect key="frame" x="94.5" y="0.0" width="319.5" height="227.5"/>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="B8A-ee-haH" userLabel="Second">
-                                                <rect key="frame" x="0.0" y="273.5" width="414" height="36.5"/>
+                                                <rect key="frame" x="0.0" y="269" width="414" height="35.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page à lire :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfE-1y-qOB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="88" height="36.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="88" height="35.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entre 1 et le nombre de pages du livre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqz-L8-FkT">
-                                                        <rect key="frame" x="93" y="0.0" width="321" height="36.5"/>
+                                                        <rect key="frame" x="93" y="0.0" width="321" height="35.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="34l-sr-O3p" userLabel="Tird">
-                                                <rect key="frame" x="0.0" y="315" width="414" height="196.5"/>
+                                                <rect key="frame" x="0.0" y="309.5" width="414" height="207.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fini avant le :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHh-nh-4tg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="196.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="207.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="EDd-BV-g6f">
-                                                        <rect key="frame" x="207" y="0.0" width="207" height="196.5"/>
+                                                        <rect key="frame" x="207" y="0.0" width="207" height="207.5"/>
                                                     </datePicker>
                                                 </subviews>
                                             </stackView>
@@ -335,7 +335,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s4-5T-9Qz">
-                                        <rect key="frame" x="0.0" y="779.5" width="414" height="38.5"/>
+                                        <rect key="frame" x="0.0" y="780" width="414" height="38"/>
                                         <color key="backgroundColor" red="0.57248461250000005" green="0.48085659739999997" blue="0.94906848669999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Ajouter ce livre"/>
@@ -387,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nC-mj-h0s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1504" y="327"/>
+            <point key="canvasLocation" x="1484" y="327"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="350-3c-A6f">

@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
+import AlamofireImage
 
 class ViewController: UIViewController {
 
@@ -39,7 +40,7 @@ class ViewController: UIViewController {
     }
     
     private func getDataFromFirestore(with db: Firestore) {
-        db.collection("books").getDocuments() { (querySnapshot, err) in
+        db.collection("books").order(by: "pagesAlreadyRead", descending: true).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents : \(err)")
             } else {
@@ -94,9 +95,12 @@ extension ViewController: UITableViewDataSource {
         let cell = booksTableView.dequeueReusableCell(withIdentifier: "bookCell") as! BookTableViewCell
         let book = books[indexPath.row]
         
+        if let url = URL(string: book.imageLink) {
+            cell.bookImageView.af.setImage(withURL: url, placeholderImage: UIImage(named: "noImage"))
+        }
+        
         cell.bookTitleLabel.text = book.title
         cell.bookAuthorLabel.text = "de \(book.author)"
-        cell.bookImageView.image = UIImage(named: book.title)
         cell.bookPagesLabel.text = "\(book.pagesAlreadyRead)/\(book.totalPages) pages"
         
         if indexPath.row % 2 == 0 {

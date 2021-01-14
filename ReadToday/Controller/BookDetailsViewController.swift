@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class BookDetailsViewController: UIViewController {
     
@@ -29,7 +30,10 @@ class BookDetailsViewController: UIViewController {
         pickerViewReadingFrequency.dataSource = self
         
         if let book = selectedBook {
-            bookImageView.image = UIImage(named: book.title)
+            if let url = URL(string: book.imageLink) {
+                bookImageView.af.setImage(withURL: url, placeholderImage: UIImage(named: "noImage"))
+            }
+            
             navigationItem.title = book.title
             haveReadLabel.text = "Vous avez lu : \(book.pagesAlreadyRead) pages sur \(book.totalPages)."
             toReadLabel.text = "Il vous reste \(book.pagesLeftToRead) pages à lire."

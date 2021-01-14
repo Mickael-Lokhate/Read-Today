@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
 
 class AddBookViewController: UIViewController {
     
@@ -108,9 +108,7 @@ extension AddBookViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 func addToDatabase(_ newBook: Book, with db: Firestore) {
-    var dbRef: DocumentReference? = nil
-    
-    dbRef = db.collection("books").addDocument(data: [
+    db.collection("books").addDocument(data: [
         "title": newBook.title,
         "author": newBook.author,
         "totalPage": newBook.totalPages,
