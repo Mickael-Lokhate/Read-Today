@@ -45,6 +45,9 @@ class ViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     self.addBookToArray(document.data())
+                    DispatchQueue.main.async {
+                        self.booksTableView.reloadData()
+                    }
                 }
             }
             
@@ -52,6 +55,7 @@ class ViewController: UIViewController {
     }
     
     private func addBookToArray(_ data: [String: Any]) {
+        
         let title = data["title"] as! String
         let author = data["author"] as! String
         let totalPages = data["totalPage"] as! Int
