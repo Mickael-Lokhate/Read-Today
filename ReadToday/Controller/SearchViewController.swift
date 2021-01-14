@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class SearchViewController: UIViewController {
     
@@ -55,41 +56,41 @@ class SearchViewController: UIViewController {
         let searchResult = data.items
         
         for book in searchResult {
-            let title = book.volumeInfo.title
-            if let author = book.volumeInfo.authors {
-                if let pagesTotal = book.volumeInfo.pageCount {
-                    let newBook = Book(title: title,
-                                       author: author[0],
-                                       totalPages: pagesTotal,
-                                       pagesAlreadyRead: 0,
-                                       readingFrequency: "Tous les jours",
-                                       pagesToReadByFrequency: 1,
-                                       dateOfEndReading: Date())
-                    books.append(newBook)
+            let infos = book.volumeInfo
+            let title = infos.title
+            if let author = infos.authors {
+                if let totalPages = infos.pageCount {
+                    if let description = infos.description {
+                        if let publisher = infos.publisher {
+                            if let publishedDate = infos.publishedDate {
+                                if let imageLink = infos.imageLinks {
+                                    let image = imageLink.thumbnail
+                                    let bookData = [title, author[0], String(totalPages), description, publisher, publishedDate, image]
+                                    createABook(with: bookData)
+                                }
+                            }
+                        }
+                    }
                 }
             } else {
-                if let pagesTotal = book.volumeInfo.pageCount {
-                    let newBook = Book(title: title,
-                                       author: "Inconnu",
-                                       totalPages: pagesTotal,
-                                       pagesAlreadyRead: 0,
-                                       readingFrequency: "Tous les jours",
-                                       pagesToReadByFrequency: 1,
-                                       dateOfEndReading: Date())
-                    books.append(newBook)
-                } else {
-                    let newBook = Book(title: title,
-                                       author: "Inconnu",
-                                       totalPages: 1,
-                                       pagesAlreadyRead: 0,
-                                       readingFrequency: "Tous les jours",
-                                       pagesToReadByFrequency: 1,
-                                       dateOfEndReading: Date())
-                    books.append(newBook)
-                }
+                
             }
-            
         }
+    }
+    
+    private func createABook(with bookData: [String]) {
+        let book = Book(title: bookData[0],
+                        author: bookData[1],
+                        totalPages: Int(bookData[2])!,
+                        description: bookData[3],
+                        publisher: bookData[4],
+                        publishedDate: bookData[5],
+                        imageLink: bookData[6],
+                        pagesAlreadyRead: 0,
+                        readingFrequency: "Tous les jours",
+                        pagesToReadByFrequency: 5,
+                        dateOfEndReading: Date())
+        books.append(book)
     }
 }
 
@@ -107,12 +108,14 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "searchResultCell") as! SearchResultTableViewCell
         let book = books[indexPath.row]
+        if let url = URL(string: book.imageLink) {
+            cell.searchResultImageView.af.setImage(withURL: url, placeholderImage: UIImage(named: "noImage"))
+        }
         
         cell.searchResultTitleLabel.text = book.title
         cell.searchResultAuthorLabel.text = "de \(book.author)"
         cell.searchResultPagesLabel.text = "Il y a \(book.totalPages) pages"
         cell.searchResultPublishLabel.text = "Publié le TEMP par TEMP"
-        
         
         return cell
     }

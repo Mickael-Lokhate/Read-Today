@@ -59,6 +59,10 @@ class ViewController: UIViewController {
         let title = data["title"] as! String
         let author = data["author"] as! String
         let totalPages = data["totalPage"] as! Int
+        let description = data["description"] as! String
+        let publisher = data["publisher"] as! String
+        let publishedDate = data["publishedDate"] as! String
+        let imageLink = data["imageLink"] as! String
         let pagesAlreadyRead = data["pagesAlreadyRead"] as! Int
         let readingFrequency = data["readingFrequency"] as! String
         let pagesPerFrequency = data["pagesPerFrequency"] as! Int
@@ -69,6 +73,10 @@ class ViewController: UIViewController {
         let book = Book(title: title,
                         author: author,
                         totalPages: totalPages,
+                        description: description,
+                        publisher: publisher,
+                        publishedDate: publishedDate,
+                        imageLink: imageLink,
                         pagesAlreadyRead: pagesAlreadyRead,
                         readingFrequency: readingFrequency,
                         pagesToReadByFrequency: pagesPerFrequency,

@@ -9,4 +9,5 @@ target 'ReadToday' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'AlamofireImage', '~> 4.1'
 end
