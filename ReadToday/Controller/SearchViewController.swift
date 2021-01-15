@@ -23,6 +23,16 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSearchDetails" {
+            let destinationVC = segue.destination as! AddBookViewController
+            
+            if let indexPath = searchTableView.indexPathForSelectedRow {
+                destinationVC.selectedBook = books[indexPath.row]
+            }
+        }
+    }
+    
     internal func getDataFromGoogleAPI(for searchQuery: String) {
         let apiKey = "AIzaSyAnr3sKnQFS6yohB28wITQ0j3o7XAN_npE"
         let urlString = "https://www.googleapis.com/books/v1/volumes?q=\(searchQuery)&key=\(apiKey)"
@@ -96,7 +106,6 @@ class SearchViewController: UIViewController {
 
 //MARK: - TableView Delegate
 extension SearchViewController: UITableViewDelegate {
-    
 }
 
 //MARK: - TableView Data Source
@@ -115,9 +124,13 @@ extension SearchViewController: UITableViewDataSource {
         cell.searchResultTitleLabel.text = book.title
         cell.searchResultAuthorLabel.text = "de \(book.author)"
         cell.searchResultPagesLabel.text = "Il y a \(book.totalPages) pages"
-        cell.searchResultPublishLabel.text = "Publié le TEMP par TEMP"
+        cell.searchResultPublishLabel.text = "Publié le \(book.publishedDate) par \(book.publisher)"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToSearchDetails", sender: self)
     }
 }
 
