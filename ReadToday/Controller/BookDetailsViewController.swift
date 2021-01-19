@@ -18,7 +18,7 @@ class BookDetailsViewController: UIViewController {
     @IBOutlet weak var pickerViewPagesPerFrequency: UIPickerView!
     
     var selectedBook: Book?
-    private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois", "Chaques semaines"]
+    private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois"]
     private var dataPagesPerFrequency: [String] = ["1"]
     
     override func viewDidLoad() {

@@ -21,7 +21,7 @@ class AddBookViewController: UIViewController {
     @IBOutlet weak var pagesLabel: UILabel!
     
     let db = Firestore.firestore()
-    private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois", "Chaques semaines"]
+    private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois"]
     var selectedBook: Book?
     
     override func viewDidLoad() {
@@ -30,13 +30,43 @@ class AddBookViewController: UIViewController {
         frequencyPickerView.delegate = self
         frequencyPickerView.dataSource = self
         
-        if let book = selectedBook {
+        if var book = selectedBook {
+            book.setDate(for: book.readingFrequency)
             showBookDetails(of: book)
+            pagesPerFrequencyTextField.addTarget(self, action: #selector(pagesPerFrequencyChanged), for: .editingDidEndOnExit)
+            datePickerView.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+            let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+            view.addGestureRecognizer(tap)
         } else {
             dismiss(animated: true, completion: nil)
         }
     }
     
+    
+    @objc private func dateChanged(){
+        if var book = selectedBook {
+            book.setPagesToRead(for: datePickerView.date, with: book.readingFrequency)
+            pagesPerFrequencyTextField.text = String(book.pagesToReadByFrequency)
+            selectedBook?.dateOfEndReading  = datePickerView.date
+        }
+    }
+    
+    @objc private func pagesPerFrequencyChanged(){
+        if var book = selectedBook {
+            if let pages = pagesPerFrequencyTextField.text {
+                if let pages = Int(pages) {
+                    if pages <= book.totalPages {
+                        book.setDate(for: book.readingFrequency, and: pages)
+                        datePickerView.date = book.dateOfEndReading
+                        selectedBook?.pagesToReadByFrequency = pages
+                        pagesPerFrequencyTextField.backgroundColor = .systemBackground
+                    } else {
+                        pagesPerFrequencyTextField.backgroundColor = .red
+                    }
+                }
+            }
+        }
+    }
     
     private func showBookDetails(of book: Book) {
         titleLabel.text = book.title
@@ -46,7 +76,7 @@ class AddBookViewController: UIViewController {
             imageView.af.setImage(withURL: url, placeholderImage: UIImage(named: "noImage"))
         }
         pagesLabel.text = "Avec \(book.totalPages) pages"
-        
+        datePickerView.date = book.dateOfEndReading
     }
     
 //    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -126,6 +156,22 @@ extension AddBookViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataReadingFrequency[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+        if var book = selectedBook{
+            selectedBook?.readingFrequency = dataReadingFrequency[row]
+            if let pages = pagesPerFrequencyTextField.text {
+                if let pages = Int(pages) {
+                    book.setDate(for: dataReadingFrequency[row], and: pages)
+                    datePickerView.date = book.dateOfEndReading
+                } else {
+                    book.setDate(for: dataReadingFrequency[row])
+                    datePickerView.date = book.dateOfEndReading
+                }
+            }
+        }
     }
 }
 
