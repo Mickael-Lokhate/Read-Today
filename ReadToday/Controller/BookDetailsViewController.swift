@@ -11,68 +11,56 @@ import AlamofireImage
 class BookDetailsViewController: UIViewController {
     
     @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var haveReadLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var totalPagesLabel: UILabel!
     @IBOutlet weak var toReadLabel: UILabel!
-    @IBOutlet weak var endOfReadingLabel: UILabel!
-    @IBOutlet weak var pickerViewReadingFrequency: UIPickerView!
-    @IBOutlet weak var pickerViewPagesPerFrequency: UIPickerView!
+    @IBOutlet weak var frequencyLabel: UILabel!
+    @IBOutlet weak var pagesPerFrequencyLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var selectedBook: Book?
-    private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois"]
-    private var dataPagesPerFrequency: [String] = ["1"]
+    var bookID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pickerViewPagesPerFrequency.delegate = self
-        pickerViewReadingFrequency.delegate = self
-        pickerViewPagesPerFrequency.dataSource = self
-        pickerViewReadingFrequency.dataSource = self
-        
         if let book = selectedBook {
             if let url = URL(string: book.imageLink) {
                 bookImageView.af.setImage(withURL: url, placeholderImage: UIImage(named: "noImage"))
             }
             
-            navigationItem.title = book.title
-            haveReadLabel.text = "Vous avez lu : \(book.pagesAlreadyRead) pages sur \(book.totalPages)."
+            titleLabel.text = book.title
+            descriptionLabel.text = book.description
             toReadLabel.text = "Il vous reste \(book.pagesLeftToRead) pages à lire."
-            
-            if book.pagesLeftToRead == 0 {
-                endOfReadingLabel.text = "Vous avez fini le livre."
+            totalPagesLabel.text = "Il y a \(book.totalPages) pages."
+            let dateFormat = DateFormatter()
+            dateFormat.timeStyle = .none
+            dateFormat.dateStyle = .medium
+            if let local = Locale.current.languageCode {
+                dateFormat.locale = Locale(identifier: local)
+                dateLabel.text = "Terminé avant : \(dateFormat.string(from: book.dateOfEndReading))"
             } else {
-                endOfReadingLabel.text = "Vous aurez fini le livre ..."
+                dateLabel.text = "Terminé avant : \(book.dateOfEndReading.description)"
             }
             
-            for i in 2...book.totalPages {
-                dataPagesPerFrequency.append(String(i))
-            }
+            frequencyLabel.text = "Fréquence de lecture : \(book.readingFrequency)"
+            pagesPerFrequencyLabel.text = "Pages à lire : \(book.pagesToReadByFrequency)"
+            
         } else {
             dismiss(animated: true, completion: nil)
         }
     }
-}
-
-//MARK: - Extension PickerView Delegate & DataSource
-extension BookDetailsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == pickerViewReadingFrequency {
-            return dataReadingFrequency.count
-        } else {
-            return dataPagesPerFrequency.count
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToAddPages" {
+            let destinationVC = segue.destination as! AddPagesController
+            destinationVC.bookID = bookID
+            destinationVC.selectedBook = selectedBook
         }
     }
+    //RELOAD DATA DEPUIS FIRESTORE POUR METTRE A JOUR PAGES APRES AJOUT
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == pickerViewReadingFrequency {
-            return dataReadingFrequency[row]
-        } else {
-            return dataPagesPerFrequency[row]
-        }
+    @IBAction func addPagesPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToAddPages", sender: self)
     }
-    
 }

@@ -12,9 +12,13 @@ import AlamofireImage
 class ViewController: UIViewController {
 
     @IBOutlet var booksTableView: UITableView!
+    @IBAction func unwindToLibrary(segue:UIStoryboardSegue) {
+        refresh()
+    }
     
     internal var books: [Book] = []
     private let db = Firestore.firestore()
+    var bookID: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +29,13 @@ class ViewController: UIViewController {
         //Table view design
         booksTableView.separatorStyle = .none
         booksTableView.showsVerticalScrollIndicator = false
-        
-        getDataFromFirestore(with: db)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.refresh()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,6 +44,7 @@ class ViewController: UIViewController {
             
             if let indexPath = booksTableView.indexPathForSelectedRow {
                 destinationVC.selectedBook = books[indexPath.row]
+                destinationVC.bookID = bookID[indexPath.row]
             }
         }
     }
@@ -46,12 +56,24 @@ class ViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     self.addBookToArray(document.data())
+                    self.addDocID(document.documentID)
                     DispatchQueue.main.async {
                         self.booksTableView.reloadData()
                     }
                 }
             }
         }
+    }
+    
+    private func refresh()
+    {
+        self.books = []
+        self.getDataFromFirestore(with: self.db)
+        self.booksTableView.reloadData()
+    }
+    
+    private func addDocID(_ docID: String){
+        bookID.append(docID)
     }
     
     private func addBookToArray(_ data: [String: Any]) {
@@ -117,4 +139,3 @@ extension ViewController: UITableViewDelegate {
         performSegue(withIdentifier: "GoToDetails", sender: self)
     }
 }
-

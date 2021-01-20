@@ -15,6 +15,7 @@
 		C4B3CCC525AF8F130084C295 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3CCC425AF8F120084C295 /* SearchViewController.swift */; };
 		C4B3CCC825B073150084C295 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3CCC725B073150084C295 /* SearchResultTableViewCell.swift */; };
 		C4B3CCCB25B080470084C295 /* GoogleBooksDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3CCCA25B080470084C295 /* GoogleBooksDatas.swift */; };
+		C4B3CD2925B8CEFD0084C295 /* AddPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3CD2825B8CEFD0084C295 /* AddPagesController.swift */; };
 		C4EC479225A5EF20007B55DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC479125A5EF20007B55DB /* AppDelegate.swift */; };
 		C4EC479425A5EF20007B55DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC479325A5EF20007B55DB /* SceneDelegate.swift */; };
 		C4EC479625A5EF20007B55DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC479525A5EF20007B55DB /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 		C4B3CCC425AF8F120084C295 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C4B3CCC725B073150084C295 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		C4B3CCCA25B080470084C295 /* GoogleBooksDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksDatas.swift; sourceTree = "<group>"; };
+		C4B3CD2825B8CEFD0084C295 /* AddPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagesController.swift; sourceTree = "<group>"; };
 		C4EC478E25A5EF20007B55DB /* ReadToday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadToday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4EC479125A5EF20007B55DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4EC479325A5EF20007B55DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				C4B3CC8E25ACB10C0084C295 /* BookDetailsViewController.swift */,
 				C4B3CC9425ADE5B90084C295 /* AddBookViewController.swift */,
 				C4B3CCC425AF8F120084C295 /* SearchViewController.swift */,
+				C4B3CD2825B8CEFD0084C295 /* AddPagesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B3CD2925B8CEFD0084C295 /* AddPagesController.swift in Sources */,
 				C4EC47AC25AC83B4007B55DB /* BookTableViewCell.swift in Sources */,
 				C4EC479625A5EF20007B55DB /* ViewController.swift in Sources */,
 				C4B3CCC525AF8F130084C295 /* SearchViewController.swift in Sources */,

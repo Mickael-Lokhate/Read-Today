@@ -42,7 +42,6 @@ class AddBookViewController: UIViewController {
         }
     }
     
-    
     @objc private func dateChanged(){
         if var book = selectedBook {
             book.setPagesToRead(for: datePickerView.date, with: book.readingFrequency)
@@ -79,69 +78,28 @@ class AddBookViewController: UIViewController {
         datePickerView.date = book.dateOfEndReading
     }
     
-//    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-//        let alert = UIAlertController(title: "Annuler l'ajout", message: "Êtes-vous sûr de vouloir annuler l'ajout d'un livre ?", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Oui", style: .default, handler: { action in
-//            self.navigationController?.popViewController(animated: true)
-//        }))
-//        alert.addAction(UIAlertAction(title: "Non", style: .cancel, handler: nil))
-//        self.present(alert, animated: true)
-//    }
-    
-//    @IBAction func addButtonPressed(_ sender: UIButton) {
-//
-//        if let title = titleTextField.text {
-//            if let author = authorTextField.text {
-//                if let totalPages = numberOfPagesTextField.text {
-//                    if let pagesPerFrequency = pagesPerFrequencyTextField.text {
-//                        if !title.isEmpty {
-//                            if !author.isEmpty {
-//                                if !totalPages.isEmpty {
-//                                    if !pagesPerFrequency.isEmpty {
-//                                        if Int(pagesPerFrequency)! > 0 && Int(pagesPerFrequency)! <= Int(totalPages)!{
-//                                            let rowFrequency = frequencyPickerView.selectedRow(inComponent: 0)
-//                                            let newBook = Book(title: title,
-//                                                               author: author,
-//                                                               totalPages: Int(totalPages)!,
-//                                                               description: "temp desc",
-//                                                               publisher: "temp publi",
-//                                                               publishedDate: "temp date",
-//                                                               imageLink: "link temp",
-//                                                               pagesAlreadyRead: 0,
-//                                                               readingFrequency: dataReadingFrequency[rowFrequency],
-//                                                               pagesToReadByFrequency: Int(pagesPerFrequency)!,
-//                                                               dateOfEndReading: datePickerView.date)
-//                                            addToDatabase(newBook, with: db)
-//
-//                                            navigationController?.popViewController(animated: true)
-//                                        } else {
-//                                            pagesPerFrequencyTextField.backgroundColor = .systemRed
-//                                        }
-//                                    } else {
-//                                        pagesPerFrequencyTextField.backgroundColor = .systemRed
-//                                    }
-//                                } else {
-//                                    numberOfPagesTextField.backgroundColor = .systemRed
-//                                }
-//                            } else {
-//                                authorTextField.backgroundColor = .systemRed
-//                            }
-//                        } else {
-//                            titleTextField.backgroundColor = .systemRed
-//                        }
-//                    } else {
-//                        pagesPerFrequencyTextField.backgroundColor = .systemRed
-//                    }
-//                } else {
-//                    numberOfPagesTextField.backgroundColor = .systemRed
-//                }
-//            } else {
-//                authorTextField.backgroundColor = .systemRed
-//            }
-//        } else {
-//            titleTextField.backgroundColor = .systemRed
-//        }
-//    }
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        let pagesToRead = selectedBook?.pagesToReadByFrequency ?? 5
+        let frequency = dataReadingFrequency[frequencyPickerView.selectedRow(inComponent: 0)]
+        let date = datePickerView.date
+        
+        if let book = selectedBook {
+            let newBook = Book(title: book.title,
+                               author: book.author,
+                               totalPages: book.totalPages,
+                               description: book.description,
+                               publisher: book.publisher,
+                               publishedDate: book.publishedDate,
+                               imageLink: book.imageLink,
+                               pagesAlreadyRead: 0,
+                               readingFrequency: frequency,
+                               pagesToReadByFrequency: pagesToRead,
+                               dateOfEndReading: date)
+            
+            addToDatabase(newBook, with: db)
+        }
+        
+    }
 }
 
 //MARK: - Extension PickerView delegate & data source
@@ -180,6 +138,10 @@ func addToDatabase(_ newBook: Book, with db: Firestore) {
         "title": newBook.title,
         "author": newBook.author,
         "totalPage": newBook.totalPages,
+        "description": newBook.description,
+        "publisher": newBook.publisher,
+        "publishedDate": newBook.publishedDate,
+        "imageLink": newBook.imageLink,
         "pagesAlreadyRead": newBook.pagesAlreadyRead,
         "readingFrequency": newBook.readingFrequency,
         "pagesPerFrequency": newBook.pagesToReadByFrequency,
