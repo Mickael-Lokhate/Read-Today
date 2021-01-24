@@ -75,7 +75,7 @@ class SearchViewController: UIViewController {
                             if let publishedDate = infos.publishedDate {
                                 if let imageLink = infos.imageLinks {
                                     let image = imageLink.thumbnail
-                                    let bookData = [title, author[0], String(totalPages), description, publisher, publishedDate, image]
+                                    let bookData = [title, author[0], String(totalPages), description, publisher, publishedDate, image, book.id]
                                     createABook(with: bookData)
                                 }
                             }
@@ -99,7 +99,8 @@ class SearchViewController: UIViewController {
                         pagesAlreadyRead: 0,
                         readingFrequency: "Tous les jours",
                         pagesToReadByFrequency: 5,
-                        dateOfEndReading: Date())
+                        dateOfEndReading: Date(),
+                        bookID: bookData[7])
         books.append(book)
     }
 }

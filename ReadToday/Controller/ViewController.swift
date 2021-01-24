@@ -12,13 +12,10 @@ import AlamofireImage
 class ViewController: UIViewController {
 
     @IBOutlet var booksTableView: UITableView!
-    @IBAction func unwindToLibrary(segue:UIStoryboardSegue) {
-        refresh()
-    }
+    @IBAction func unwindToLibrary(segue:UIStoryboardSegue){}
     
     internal var books: [Book] = []
     private let db = Firestore.firestore()
-    var bookID: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +40,7 @@ class ViewController: UIViewController {
             let destinationVC = segue.destination as! BookDetailsViewController
             
             if let indexPath = booksTableView.indexPathForSelectedRow {
-                destinationVC.selectedBook = books[indexPath.row]
-                destinationVC.bookID = bookID[indexPath.row]
+                destinationVC.book = books[indexPath.row]
             }
         }
     }
@@ -55,8 +51,7 @@ class ViewController: UIViewController {
                 print("Error getting documents : \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    self.addBookToArray(document.data())
-                    self.addDocID(document.documentID)
+                    self.addBookToArray(document.data(), document.documentID)
                     DispatchQueue.main.async {
                         self.booksTableView.reloadData()
                     }
@@ -72,11 +67,7 @@ class ViewController: UIViewController {
         self.booksTableView.reloadData()
     }
     
-    private func addDocID(_ docID: String){
-        bookID.append(docID)
-    }
-    
-    private func addBookToArray(_ data: [String: Any]) {
+    private func addBookToArray(_ data: [String: Any], _ docID: String) {
         
         let title = data["title"] as! String
         let author = data["author"] as! String
@@ -102,7 +93,8 @@ class ViewController: UIViewController {
                         pagesAlreadyRead: pagesAlreadyRead,
                         readingFrequency: readingFrequency,
                         pagesToReadByFrequency: pagesPerFrequency,
-                        dateOfEndReading: dateOfEndReading)
+                        dateOfEndReading: dateOfEndReading,
+                        bookID: docID)
         books.append(book)
     }
 }

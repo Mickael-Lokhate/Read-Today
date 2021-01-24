@@ -334,7 +334,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="34l-sr-O3p" userLabel="Tird">
                                                 <rect key="frame" x="0.0" y="294.5" width="414" height="228"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fini avant le :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHh-nh-4tg">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fini avant :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHh-nh-4tg">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="228"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -553,6 +553,10 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a65-7L-y3G">
                                                 <rect key="frame" x="0.0" y="402.5" width="409" height="80.5"/>
                                                 <state key="normal" title="J'ai terminé le livre !"/>
+                                                <connections>
+                                                    <action selector="bookFinishedPressed:" destination="oa1-9G-xzH" eventType="touchUpInside" id="ptY-RM-wMM"/>
+                                                    <segue destination="fLf-xW-beN" kind="unwind" unwindAction="unwindToLibraryWithSegue:" id="hG0-cZ-Efp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -598,6 +602,7 @@
                         <outlet property="bookImageView" destination="7jE-kH-PPD" id="6rA-AZ-rZ8"/>
                         <outlet property="dateLabel" destination="3Hb-RR-5fl" id="b4K-Nz-Sxt"/>
                         <outlet property="descriptionLabel" destination="eMU-LH-sO5" id="pSx-KP-H8i"/>
+                        <outlet property="finishedButton" destination="a65-7L-y3G" id="INm-QE-eiB"/>
                         <outlet property="frequencyLabel" destination="RQD-ad-xgY" id="Pn0-ZS-8tw"/>
                         <outlet property="pagesPerFrequencyLabel" destination="P6E-JH-4VH" id="cZc-fz-EEK"/>
                         <outlet property="titleLabel" destination="HZi-9f-1E8" id="LLM-Dm-r3k"/>
@@ -606,6 +611,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC3-GY-4Vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="fLf-xW-beN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="486.95652173913049" y="-363.61607142857139"/>
         </scene>
@@ -622,6 +628,7 @@
                                 <state key="normal" title="Ajouter ce nombre de pages"/>
                                 <connections>
                                     <action selector="addPages:" destination="ySo-Wi-LZF" eventType="touchUpInside" id="cRR-77-H3f"/>
+                                    <segue destination="KoI-ar-7QX" kind="unwind" unwindAction="unwindToLibraryWithSegue:" id="x4m-hq-8qM"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCf-rF-Sb0">
@@ -645,6 +652,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlU-BU-bcT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="KoI-ar-7QX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1449" y="-364"/>
         </scene>

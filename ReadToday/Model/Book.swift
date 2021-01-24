@@ -22,6 +22,8 @@ internal struct Book {
     var pagesLeftToRead: Int {
         return totalPages - pagesAlreadyRead
     }
+    var bookID: String
+    var isFinished: Bool = false
     
     mutating func setPagesToRead(for date: Date, with frequency: String = "Tous les jours"){
         let daysNbr = Int(ceil(Date().distance(to: date) / 86400))

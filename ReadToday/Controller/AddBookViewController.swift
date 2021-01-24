@@ -94,7 +94,8 @@ class AddBookViewController: UIViewController {
                                pagesAlreadyRead: 0,
                                readingFrequency: frequency,
                                pagesToReadByFrequency: pagesToRead,
-                               dateOfEndReading: date)
+                               dateOfEndReading: date,
+                               bookID: book.bookID)
             
             addToDatabase(newBook, with: db)
         }
