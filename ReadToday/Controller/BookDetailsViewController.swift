@@ -28,22 +28,9 @@ class BookDetailsViewController: UIViewController {
         super.viewDidLoad()
         if let book = book {
             getDataFromFirestore(with: db)
-            DispatchQueue.main.async {
-                self.setDetails(with: book)
-            }
-            
+            self.setDetails(with: book)
         } else {
             dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getDataFromFirestore(with: db)
-        if let book = book {
-            DispatchQueue.main.async {
-                self.setDetails(with: book)
-            }
         }
     }
     
@@ -55,8 +42,8 @@ class BookDetailsViewController: UIViewController {
     }
     
     private func getDataFromFirestore(with db: Firestore) {
-        if let book = book {
-            let ref = db.collection("books").document(book.bookID)
+        if let n_book = book {
+            let ref = db.collection("books").document(n_book.bookID)
             
             ref.getDocument { (doc, error) in
                 if let error = error {
@@ -65,6 +52,9 @@ class BookDetailsViewController: UIViewController {
                     if let doc = doc {
                         if let datas = doc.data() {
                             self.addBook(datas, doc.documentID)
+                            if let book = self.book {
+                                self.setDetails(with: book)
+                            }
                         }
                     }
                 }
@@ -80,14 +70,14 @@ class BookDetailsViewController: UIViewController {
         
         titleLabel.text = book.title
         descriptionLabel.text = book.description
-        if (!book.isFinished)
+        if (book.isFinished)
         {
-            toReadLabel.text = "Il vous reste \(book.pagesLeftToRead) pages à lire."
-            
-        } else {
             toReadLabel.text = "Vous avez finis le livre."
             finishedButton.isEnabled = false
             finishedButton.isUserInteractionEnabled = false
+            
+        } else {
+            toReadLabel.text = "Il vous reste \(book.pagesLeftToRead) pages à lire."
         }
         totalPagesLabel.text = "Il y a \(book.totalPages) pages."
         let dateFormat = DateFormatter()
@@ -102,7 +92,7 @@ class BookDetailsViewController: UIViewController {
             }
             
         } else {
-            if book.isFinished {
+            if book.isFinished == true {
                 dateLabel.text = "Terminé le : \(book.dateOfEndReading.description)"
             } else {
                 dateLabel.text = "Terminé avant : \(book.dateOfEndReading.description)"
@@ -126,6 +116,7 @@ class BookDetailsViewController: UIViewController {
         let pagesPerFrequency = data["pagesPerFrequency"] as! Int
         let tmpDate = data["dateOfEndReading"] as! Timestamp
         let dateOfEndReading = Date(timeIntervalSince1970: TimeInterval(tmpDate.seconds))
+        let isFinished = data["isFinished"] as! Bool
         
         let newBook = Book(title: title,
                            author: author,
@@ -138,7 +129,8 @@ class BookDetailsViewController: UIViewController {
                            readingFrequency: readingFrequency,
                            pagesToReadByFrequency: pagesPerFrequency,
                            dateOfEndReading: dateOfEndReading,
-                           bookID: docID)
+                           bookID: docID,
+                           isFinished: isFinished)
         book = newBook
         
     }
