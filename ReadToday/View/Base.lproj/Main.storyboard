@@ -10,6 +10,74 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Register View Controller-->
+        <scene sceneID="ZeF-Mc-WUs">
+            <objects>
+                <viewController id="9d4-ZF-b2n" customClass="RegisterViewController" customModule="ReadToday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0WW-hk-vLC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="121" translatesAutoresizingMaskIntoConstraints="NO" id="ajB-20-Vf8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Créer un compte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awk-uY-2cf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mon nom d'utilisateur" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PgO-Lx-yMq">
+                                        <rect key="frame" x="0.0" y="162" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="username"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mon adresse email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vrS-vE-afz">
+                                        <rect key="frame" x="0.0" y="317" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mon mot de passe" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Icb-EQ-L8W">
+                                        <rect key="frame" x="0.0" y="472" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmation du mot de passe" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wg6-ao-qg7">
+                                        <rect key="frame" x="0.0" y="627" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZA-z4-JRa">
+                                        <rect key="frame" x="0.0" y="782" width="414" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Créer mon compte"/>
+                                        <connections>
+                                            <action selector="createAccountPressed:" destination="9d4-ZF-b2n" eventType="touchUpInside" id="AiT-ou-f2C"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HGq-iF-KZW"/>
+                        <color key="backgroundColor" name="LightPurple"/>
+                        <constraints>
+                            <constraint firstItem="ajB-20-Vf8" firstAttribute="top" secondItem="HGq-iF-KZW" secondAttribute="top" id="969-i2-M7A"/>
+                            <constraint firstItem="ajB-20-Vf8" firstAttribute="bottom" secondItem="HGq-iF-KZW" secondAttribute="bottom" id="Qip-59-lYf"/>
+                            <constraint firstItem="HGq-iF-KZW" firstAttribute="trailing" secondItem="ajB-20-Vf8" secondAttribute="trailing" id="VHl-9y-0QR"/>
+                            <constraint firstItem="ajB-20-Vf8" firstAttribute="leading" secondItem="HGq-iF-KZW" secondAttribute="leading" id="ema-tf-5oU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextfield" destination="Wg6-ao-qg7" id="rZn-p4-jMj"/>
+                        <outlet property="emailTextfield" destination="vrS-vE-afz" id="unu-gR-oth"/>
+                        <outlet property="passwordTextfield" destination="Icb-EQ-L8W" id="acL-IG-76j"/>
+                        <outlet property="usernameTextfield" destination="PgO-Lx-yMq" id="zwu-gV-x2O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwm-hk-Pw9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-500" y="-364"/>
+        </scene>
         <!--Ma bibliothèque-->
         <scene sceneID="4x5-fW-EqP">
             <objects>
@@ -107,7 +175,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4y-ug-6VL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-500.00000000000006" y="66.964285714285708"/>
+            <point key="canvasLocation" x="-500" y="327"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="ht9-iw-msR">
@@ -214,7 +282,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtN-MN-t2K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="486.95652173913049" y="326.78571428571428"/>
+            <point key="canvasLocation" x="487" y="676"/>
         </scene>
         <!--Ajouter un livre-->
         <scene sceneID="qDk-wO-6fA">
@@ -410,7 +478,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nC-mj-h0s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="dua-Ef-3gH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1484" y="327"/>
+            <point key="canvasLocation" x="1522" y="676"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="VOD-Hd-9st">
@@ -502,7 +570,7 @@ Today</string>
                 <navigationController id="fcg-0j-wEC" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="z4Z-Y3-5Bj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="opY-Ow-WPm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -698,7 +766,7 @@ Today</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC3-GY-4Vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="fLf-xW-beN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="486.95652173913049" y="-363.61607142857139"/>
+            <point key="canvasLocation" x="487" y="-21"/>
         </scene>
         <!--Add Pages Controller-->
         <scene sceneID="gQO-LN-5aO">
@@ -739,7 +807,7 @@ Today</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlU-BU-bcT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="KoI-ar-7QX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="-364"/>
+            <point key="canvasLocation" x="1522" y="-21"/>
         </scene>
     </scenes>
     <resources>
