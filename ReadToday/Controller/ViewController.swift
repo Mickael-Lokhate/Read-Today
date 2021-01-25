@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     internal var books: [Book] = []
     private let db = Firestore.firestore()
+    var userID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,9 @@ class ViewController: UIViewController {
         //Table view design
         booksTableView.separatorStyle = .none
         booksTableView.showsVerticalScrollIndicator = false
+        if let userID = userID {
+            print(userID)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
