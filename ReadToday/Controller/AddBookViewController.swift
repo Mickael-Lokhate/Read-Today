@@ -156,6 +156,7 @@ func addToDatabase(_ newBook: Book, with db: Firestore, for userID: String) {
         "readingFrequency": newBook.readingFrequency,
         "pagesPerFrequency": newBook.pagesToReadByFrequency,
         "dateOfEndReading": newBook.dateOfEndReading,
-        "userId": userID
+        "userId": userID,
+        "isFinished": newBook.isFinished
     ])
 }
