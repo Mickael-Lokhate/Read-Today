@@ -17,11 +17,18 @@ class LoginViewController: UIViewController {
     @IBAction func unwindLogin(segue: UIStoryboardSegue){}
     
     var userID: String?
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         errorLabel.text = ""
+        userID = defaults.string(forKey: "userID")
+      
+        guard userID == nil else {
+            performSegue(withIdentifier: "goToLibrary", sender: self)
+            return
+        }
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
@@ -43,8 +50,7 @@ class LoginViewController: UIViewController {
                         }
                     } else {
                         self.userID = Auth.auth().currentUser?.uid
-                        let defaults = UserDefaults.standard
-                        defaults.setValue(self.userID, forKey: "userID")
+                        self.defaults.setValue(self.userID, forKey: "userID")
                         self.performSegue(withIdentifier: "goToLibrary", sender: self)
                     }
                 }
