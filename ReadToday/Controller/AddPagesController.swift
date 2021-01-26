@@ -16,12 +16,20 @@ class AddPagesController: UIViewController {
     private let db = Firestore.firestore()
     private var pagesRead = 0
     private var datasPickerView: [Int] = []
+    var userID: String?
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pagesPickerView.delegate = self
         pagesPickerView.dataSource = self
+        
+        userID = defaults.string(forKey: "userID")
+        guard userID != nil else {
+            performSegue(withIdentifier: "unwindFromAddPages", sender: self)
+            return
+        }
         
         if let book = selectedBook {
             pagesRead = book.pagesAlreadyRead

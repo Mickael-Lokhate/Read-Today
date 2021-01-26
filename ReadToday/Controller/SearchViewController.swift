@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     private var books: [Book] = []
+    var userID: String?
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,12 @@ class SearchViewController: UIViewController {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchBar.delegate = self
+        
+        userID = defaults.string(forKey: "userID")
+        guard userID != nil else {
+            performSegue(withIdentifier: "unwindFromSearch", sender: self)
+            return
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

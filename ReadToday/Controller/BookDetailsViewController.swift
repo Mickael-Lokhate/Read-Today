@@ -23,9 +23,17 @@ class BookDetailsViewController: UIViewController {
     
     var book: Book?
     private let db = Firestore.firestore()
+    var userID: String?
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userID = defaults.string(forKey: "userID")
+        guard userID != nil else {
+            performSegue(withIdentifier: "unwindFromDetails", sender: self)
+            return
+        }
         if let book = book {
             getDataFromFirestore(with: db)
             self.setDetails(with: book)

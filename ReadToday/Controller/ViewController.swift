@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     internal var books: [Book] = []
     private let db = Firestore.firestore()
+    let defaults = UserDefaults.standard
     var userID: String?
     
     override func viewDidLoad() {
@@ -27,8 +28,13 @@ class ViewController: UIViewController {
         //Table view design
         booksTableView.separatorStyle = .none
         booksTableView.showsVerticalScrollIndicator = false
-        if let userID = userID {
-            print(userID)
+        
+        navigationItem.setHidesBackButton(true, animated: false)
+        userID = defaults.string(forKey: "userID")
+
+        guard userID != nil else {
+            performSegue(withIdentifier: "unwindFromLibrary", sender: self)
+            return
         }
     }
     
@@ -50,7 +56,8 @@ class ViewController: UIViewController {
     }
     
     private func getDataFromFirestore(with db: Firestore) {
-        db.collection("books").order(by: "pagesAlreadyRead", descending: true).getDocuments() { (querySnapshot, err) in
+        db.collection("books").whereField("userId", isEqualTo: userID!).getDocuments() {
+            (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents : \(err)")
             } else {

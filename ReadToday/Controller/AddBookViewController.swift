@@ -23,12 +23,20 @@ class AddBookViewController: UIViewController {
     let db = Firestore.firestore()
     private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois"]
     var selectedBook: Book?
+    var userID: String?
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         frequencyPickerView.delegate = self
         frequencyPickerView.dataSource = self
+        
+        userID = defaults.string(forKey: "userID")
+        guard userID != nil else {
+            performSegue(withIdentifier: "unwindFromAddBook", sender: self)
+            return
+        }
         
         if var book = selectedBook {
             book.setDate(for: book.readingFrequency)
@@ -96,8 +104,9 @@ class AddBookViewController: UIViewController {
                                pagesToReadByFrequency: pagesToRead,
                                dateOfEndReading: date,
                                bookID: book.bookID)
-            
-            addToDatabase(newBook, with: db)
+            if let userID = userID {
+                addToDatabase(newBook, with: db, for: userID)
+            }
         }
         
     }
@@ -134,7 +143,7 @@ extension AddBookViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-func addToDatabase(_ newBook: Book, with db: Firestore) {
+func addToDatabase(_ newBook: Book, with db: Firestore, for userID: String) {
     db.collection("books").addDocument(data: [
         "title": newBook.title,
         "author": newBook.author,
@@ -147,6 +156,6 @@ func addToDatabase(_ newBook: Book, with db: Firestore) {
         "readingFrequency": newBook.readingFrequency,
         "pagesPerFrequency": newBook.pagesToReadByFrequency,
         "dateOfEndReading": newBook.dateOfEndReading,
-        "userId": "Ab1c2B"
+        "userId": userID
     ])
 }

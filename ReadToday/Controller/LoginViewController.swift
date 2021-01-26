@@ -14,22 +14,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBAction func unwindLogin(segue: UIStoryboardSegue){}
+    
     var userID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         errorLabel.text = ""
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToLibrary" {
-            let destinationVC = segue.destination as! ViewController
-            
-            if let userID = userID {
-                destinationVC.userID = userID
-            }
-        }
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
@@ -51,6 +43,8 @@ class LoginViewController: UIViewController {
                         }
                     } else {
                         self.userID = Auth.auth().currentUser?.uid
+                        let defaults = UserDefaults.standard
+                        defaults.setValue(self.userID, forKey: "userID")
                         self.performSegue(withIdentifier: "goToLibrary", sender: self)
                     }
                 }
