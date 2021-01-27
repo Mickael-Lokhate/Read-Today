@@ -12,6 +12,8 @@ import AlamofireImage
 class ViewController: UIViewController {
 
     @IBOutlet var booksTableView: UITableView!
+    @IBOutlet weak var progressBar: UIProgressView!
+    
     @IBAction func unwindToLibrary(segue:UIStoryboardSegue){}
     
     internal var books: [Book] = []
@@ -55,6 +57,11 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
+        defaults.removeObject(forKey: "userID")
+        performSegue(withIdentifier: "unwindLogout", sender: self)
+    }
+    
     private func getDataFromFirestore(with db: Firestore) {
         db.collection("books").whereField("userId", isEqualTo: userID!).getDocuments() {
             (querySnapshot, err) in
@@ -92,6 +99,9 @@ class ViewController: UIViewController {
         let pagesPerFrequency = data["pagesPerFrequency"] as! Int
         let tmpDate = data["dateOfEndReading"] as! Timestamp
         let dateOfEndReading = Date(timeIntervalSince1970: TimeInterval(tmpDate.seconds))
+        let isNotificationActive = data["isNotificationActive"] as! Bool
+        let tmpNotificationTime = data["notificationTime"] as! Timestamp
+        let notificationTime = Date(timeIntervalSince1970: TimeInterval(tmpNotificationTime.seconds))
  
         
         let book = Book(title: title,
@@ -105,7 +115,9 @@ class ViewController: UIViewController {
                         readingFrequency: readingFrequency,
                         pagesToReadByFrequency: pagesPerFrequency,
                         dateOfEndReading: dateOfEndReading,
-                        bookID: docID)
+                        bookID: docID,
+                        isNotificationActive: isNotificationActive,
+                        notificationTime: notificationTime)
         books.append(book)
     }
 }
@@ -126,6 +138,7 @@ extension ViewController: UITableViewDataSource {
         cell.bookTitleLabel.text = book.title
         cell.bookAuthorLabel.text = "de \(book.author)"
         cell.bookPagesLabel.text = "\(book.pagesAlreadyRead)/\(book.totalPages) pages"
+        cell.progressBar.progress = (((100.0 * Float(book.pagesAlreadyRead)) / Float(book.totalPages)) / 100.0)
         
         if indexPath.row % 2 == 0 {
             cell.bookView.backgroundColor = UIColor(named: "DarkPurple")

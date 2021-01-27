@@ -25,6 +25,7 @@
 		C4EC479B25A5EF22007B55DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4EC479A25A5EF22007B55DB /* Assets.xcassets */; };
 		C4EC479E25A5EF22007B55DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4EC479C25A5EF22007B55DB /* LaunchScreen.storyboard */; };
 		C4EC47AC25AC83B4007B55DB /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC47AB25AC83B4007B55DB /* BookTableViewCell.swift */; };
+		C4F2AA6B25C1EFCE004353AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F2AA6A25C1EFCE004353AA /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C4EC479D25A5EF22007B55DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4EC479F25A5EF22007B55DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4EC47AB25AC83B4007B55DB /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookTableViewCell.swift; path = ReadToday/Model/BookTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		C4F2AA6A25C1EFCE004353AA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D8CA1D53BD183402E27693E3 /* Pods-ReadToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadToday.debug.xcconfig"; path = "Target Support Files/Pods-ReadToday/Pods-ReadToday.debug.xcconfig"; sourceTree = "<group>"; };
 		E047DE794DCB5E9DEACE11B1 /* Pods_ReadToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				C4B3CD2825B8CEFD0084C295 /* AddPagesController.swift */,
 				C4B3CD2B25BF58B40084C295 /* LoginViewController.swift */,
 				C4B3CD2E25BF66FB0084C295 /* RegisterViewController.swift */,
+				C4F2AA6A25C1EFCE004353AA /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				C4B3CC9525ADE5B90084C295 /* AddBookViewController.swift in Sources */,
 				C4B3CCCB25B080470084C295 /* GoogleBooksDatas.swift in Sources */,
 				C4B3CC8F25ACB10C0084C295 /* BookDetailsViewController.swift in Sources */,
+				C4F2AA6B25C1EFCE004353AA /* SettingsViewController.swift in Sources */,
 				C4EC479225A5EF20007B55DB /* AppDelegate.swift in Sources */,
 				C4B3CD2F25BF66FB0084C295 /* RegisterViewController.swift in Sources */,
 				C4EC479425A5EF20007B55DB /* SceneDelegate.swift in Sources */,

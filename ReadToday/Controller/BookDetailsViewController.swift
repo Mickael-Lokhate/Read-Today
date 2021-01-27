@@ -20,6 +20,7 @@ class BookDetailsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var finishedButton: UIButton!
+    @IBOutlet weak var addPagesButton: UIButton!
     
     var book: Book?
     private let db = Firestore.firestore()
@@ -45,6 +46,11 @@ class BookDetailsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToAddPages" {
             let destinationVC = segue.destination as! AddPagesController
+            destinationVC.selectedBook = book
+        }
+        
+        if segue.identifier == "goToSettings" {
+            let destinationVC = segue.destination as! SettingsViewController
             destinationVC.selectedBook = book
         }
     }
@@ -83,6 +89,8 @@ class BookDetailsViewController: UIViewController {
             toReadLabel.text = "Vous avez finis le livre."
             finishedButton.isEnabled = false
             finishedButton.isUserInteractionEnabled = false
+            addPagesButton.isEnabled = false
+            addPagesButton.isUserInteractionEnabled = false
             
         } else {
             toReadLabel.text = "Il vous reste \(book.pagesLeftToRead) pages à lire."
@@ -125,6 +133,9 @@ class BookDetailsViewController: UIViewController {
         let tmpDate = data["dateOfEndReading"] as! Timestamp
         let dateOfEndReading = Date(timeIntervalSince1970: TimeInterval(tmpDate.seconds))
         let isFinished = data["isFinished"] as! Bool
+        let isNotificationActive = data["isNotificationActive"] as! Bool
+        let tmpNotificationTime = data["notificationTime"] as! Timestamp
+        let notificationTime = Date(timeIntervalSince1970: TimeInterval(tmpNotificationTime.seconds))
         
         let newBook = Book(title: title,
                            author: author,
@@ -138,7 +149,9 @@ class BookDetailsViewController: UIViewController {
                            pagesToReadByFrequency: pagesPerFrequency,
                            dateOfEndReading: dateOfEndReading,
                            bookID: docID,
-                           isFinished: isFinished)
+                           isFinished: isFinished,
+                           isNotificationActive: isNotificationActive,
+                           notificationTime: notificationTime)
         book = newBook
         
     }

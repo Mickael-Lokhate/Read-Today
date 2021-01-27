@@ -1,24 +1,20 @@
 //
-//  AddBookViewController.swift
+//  SettingsViewController.swift
 //  ReadToday
 //
-//  Created by Mickael Lokhate on 12/01/2021.
+//  Created by Mickael Lokhate on 27/01/2021.
 //
 
 import UIKit
 import FirebaseFirestore
-import AlamofireImage
 
-class AddBookViewController: UIViewController {
+class SettingsViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var notifSwitch: UISwitch!
+    @IBOutlet weak var notifTimePicker: UIDatePicker!
     @IBOutlet weak var frequencyPickerView: UIPickerView!
-    @IBOutlet weak var pagesPerFrequencyTextField: UITextField!
+    @IBOutlet weak var pagesPerFrequencyTextfield: UITextField!
     @IBOutlet weak var datePickerView: UIDatePicker!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var pagesLabel: UILabel!
     
     let db = Firestore.firestore()
     private let dataReadingFrequency: [String] = ["Tous les jours", "1 fois/semaines", "2 fois/semaines", "3 fois/semaines", "4 fois/semaines", "5 fois/semaines", "6 fois/semaines", "1 fois/mois", "2 fois/mois", "3 fois/mois"]
@@ -34,14 +30,13 @@ class AddBookViewController: UIViewController {
         
         userID = defaults.string(forKey: "userID")
         guard userID != nil else {
-            performSegue(withIdentifier: "unwindFromAddBook", sender: self)
+            performSegue(withIdentifier: "unwindFromSettings", sender: self)
             return
         }
         
-        if var book = selectedBook {
-            book.setDate(for: book.readingFrequency)
-            showBookDetails(of: book)
-            pagesPerFrequencyTextField.addTarget(self, action: #selector(pagesPerFrequencyChanged), for: .editingDidEndOnExit)
+        if let book = selectedBook {
+            showDetails(of: book)
+            pagesPerFrequencyTextfield.addTarget(self, action: #selector(pagesPerFrequencyChanged), for: .editingDidEndOnExit)
             datePickerView.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
             let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
             view.addGestureRecognizer(tap)
@@ -53,43 +48,49 @@ class AddBookViewController: UIViewController {
     @objc private func dateChanged(){
         if var book = selectedBook {
             book.setPagesToRead(for: datePickerView.date, with: book.readingFrequency)
-            pagesPerFrequencyTextField.text = String(book.pagesToReadByFrequency)
+            pagesPerFrequencyTextfield.text = String(book.pagesToReadByFrequency)
             selectedBook?.dateOfEndReading  = datePickerView.date
         }
     }
     
     @objc private func pagesPerFrequencyChanged(){
         if var book = selectedBook {
-            if let pages = pagesPerFrequencyTextField.text {
+            if let pages = pagesPerFrequencyTextfield.text {
                 if let pages = Int(pages) {
                     if pages <= book.totalPages {
                         book.setDate(for: book.readingFrequency, and: pages)
                         datePickerView.date = book.dateOfEndReading
                         selectedBook?.pagesToReadByFrequency = pages
-                        pagesPerFrequencyTextField.backgroundColor = .systemBackground
+                        pagesPerFrequencyTextfield.backgroundColor = .systemBackground
                     } else {
-                        pagesPerFrequencyTextField.backgroundColor = .red
+                        pagesPerFrequencyTextfield.backgroundColor = .red
                     }
                 }
             }
         }
     }
     
-    private func showBookDetails(of book: Book) {
-        titleLabel.text = book.title
-        authorLabel.text = "de \(book.author)"
-        descriptionLabel.text = book.description
-        if let url = URL(string: book.imageLink) {
-            imageView.af.setImage(withURL: url, placeholderImage: UIImage(named: "noImage"))
-        }
-        pagesLabel.text = "Avec \(book.totalPages) pages"
+    private func showDetails(of book: Book) {
         datePickerView.date = book.dateOfEndReading
+        notifTimePicker.date = book.notificationTime
+        pagesPerFrequencyTextfield.text = String(book.pagesToReadByFrequency)
+        var i = 0;
+        for frequency in dataReadingFrequency {
+            if (frequency == book.readingFrequency) {
+                break
+            }
+            i += 1;
+        }
+        frequencyPickerView.selectRow(i, inComponent: 0, animated: false)
+        
     }
     
-    @IBAction func addButtonPressed(_ sender: UIButton) {
+    @IBAction func savePressed(_ sender: UIButton) {
         let pagesToRead = selectedBook?.pagesToReadByFrequency ?? 5
         let frequency = dataReadingFrequency[frequencyPickerView.selectedRow(inComponent: 0)]
         let date = datePickerView.date
+        let isNotificationActive = notifSwitch.isOn
+        let notificationTime = notifTimePicker.date
         
         if let book = selectedBook {
             let newBook = Book(title: book.title,
@@ -104,18 +105,17 @@ class AddBookViewController: UIViewController {
                                pagesToReadByFrequency: pagesToRead,
                                dateOfEndReading: date,
                                bookID: book.bookID,
-                               isNotificationActive: book.isNotificationActive,
-                               notificationTime: book.setDefaultNotificationTime())
+                               isNotificationActive: isNotificationActive,
+                               notificationTime: notificationTime)
             if let userID = userID {
-                addToDatabase(newBook, with: db, for: userID)
+                updateDatabase(newBook, with: db, for: userID)
             }
         }
-        
     }
 }
 
 //MARK: - Extension PickerView delegate & data source
-extension AddBookViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -132,7 +132,7 @@ extension AddBookViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
         if var book = selectedBook{
             selectedBook?.readingFrequency = dataReadingFrequency[row]
-            if let pages = pagesPerFrequencyTextField.text {
+            if let pages = pagesPerFrequencyTextfield.text {
                 if let pages = Int(pages) {
                     book.setDate(for: dataReadingFrequency[row], and: pages)
                     datePickerView.date = book.dateOfEndReading
@@ -145,22 +145,18 @@ extension AddBookViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-private func addToDatabase(_ newBook: Book, with db: Firestore, for userID: String) {
-    db.collection("books").addDocument(data: [
-        "title": newBook.title,
-        "author": newBook.author,
-        "totalPage": newBook.totalPages,
-        "description": newBook.description,
-        "publisher": newBook.publisher,
-        "publishedDate": newBook.publishedDate,
-        "imageLink": newBook.imageLink,
-        "pagesAlreadyRead": newBook.pagesAlreadyRead,
-        "readingFrequency": newBook.readingFrequency,
-        "pagesPerFrequency": newBook.pagesToReadByFrequency,
-        "dateOfEndReading": newBook.dateOfEndReading,
-        "userId": userID,
-        "isFinished": newBook.isFinished,
-        "isNotificationActive": newBook.isNotificationActive,
-        "notificationTime": newBook.notificationTime
-    ])
+private func updateDatabase(_ newBook: Book, with db: Firestore, for userID: String) {
+    let bookRef = db.collection("books").document(newBook.bookID)
+    
+    bookRef.updateData([
+                        "readingFrequency": newBook.readingFrequency,
+                        "pagesPerFrequency": newBook.pagesToReadByFrequency,
+                        "dateOfEndReading": newBook.dateOfEndReading,
+                        "isNotificationActive": newBook.isNotificationActive,
+                        "notificationTime": newBook.notificationTime]) { err in
+        if let err = err {
+            print("Error updating document : \(err)")
+        }
+        
+    }
 }

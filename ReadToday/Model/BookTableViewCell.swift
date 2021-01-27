@@ -13,6 +13,7 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookAuthorLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var bookPagesLabel: UILabel!
     
     override func awakeFromNib() {

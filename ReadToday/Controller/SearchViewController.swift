@@ -108,7 +108,9 @@ class SearchViewController: UIViewController {
                         readingFrequency: "Tous les jours",
                         pagesToReadByFrequency: 5,
                         dateOfEndReading: Date(),
-                        bookID: bookData[7])
+                        bookID: bookData[7],
+                        isNotificationActive: true,
+                        notificationTime: Date())
         books.append(book)
     }
 }
