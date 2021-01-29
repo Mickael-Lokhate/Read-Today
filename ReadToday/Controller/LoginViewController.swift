@@ -22,9 +22,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         errorLabel.text = ""
         userID = defaults.string(forKey: "userID")
-      
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
         guard userID == nil else {
             performSegue(withIdentifier: "goToLibrary", sender: self)
             return
@@ -62,5 +66,14 @@ class LoginViewController: UIViewController {
             emailTextField.backgroundColor = .red
             errorLabel.text = "Un email est nécessaire."
         }
+    }
+}
+
+//MARK: - Textfield delegate
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

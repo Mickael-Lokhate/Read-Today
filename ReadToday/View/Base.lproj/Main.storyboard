@@ -56,7 +56,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZA-z4-JRa">
                                         <rect key="frame" x="0.0" y="686" width="414" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Créer mon compte"/>
+                                        <state key="normal" title="Créer mon compte">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="createAccountPressed:" destination="9d4-ZF-b2n" eventType="touchUpInside" id="AiT-ou-f2C"/>
                                         </connections>
@@ -539,26 +541,30 @@ Today</string>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="micka@test.com" borderStyle="roundedRect" placeholder="Mon email" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-Z2-bUp">
+                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mon email" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-Z2-bUp">
                                         <rect key="frame" x="0.0" y="5" width="414" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="continue" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="Mon mot de passe" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="nDJ-71-McI">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mon mot de passe" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="nDJ-71-McI">
                                         <rect key="frame" x="0.0" y="44" width="414" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0H-S6-4Ho">
                                         <rect key="frame" x="0.0" y="83" width="414" height="30"/>
-                                        <state key="normal" title="Je me connecte"/>
+                                        <state key="normal" title="Je me connecte">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginPressed:" destination="Fo6-hn-0fi" eventType="touchUpInside" id="LM0-DL-zZw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMk-5A-65x">
                                         <rect key="frame" x="0.0" y="118" width="414" height="30"/>
-                                        <state key="normal" title="Je créer un compte"/>
+                                        <state key="normal" title="Je créer un compte">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
                                         <connections>
                                             <segue destination="9d4-ZF-b2n" kind="show" identifier="goToRegister" id="enK-Zx-dY4"/>
                                         </connections>
@@ -820,7 +826,7 @@ Today</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZRn-7t-XEo">
-                                <rect key="frame" x="15" y="141.5" width="384" height="247"/>
+                                <rect key="frame" x="15" y="141.5" width="384" height="81"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-Rf-vqS" userLabel="active notif">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="31"/>
@@ -837,18 +843,22 @@ Today</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tge-Zw-SCP" userLabel="hour notif">
-                                        <rect key="frame" x="0.0" y="31" width="384" height="216"/>
+                                        <rect key="frame" x="0.0" y="31" width="384" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heure de notification :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vax-hn-nh3">
-                                                <rect key="frame" x="0.0" y="98" width="192" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="15" width="192" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="G0p-tZ-Gee">
-                                                <rect key="frame" x="192" y="0.0" width="192" height="216"/>
+                                                <rect key="frame" x="192" y="0.0" width="192" height="50"/>
                                             </datePicker>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="G0p-tZ-Gee" firstAttribute="top" secondItem="Tge-Zw-SCP" secondAttribute="top" id="5lM-96-7gw"/>
+                                            <constraint firstAttribute="bottom" secondItem="G0p-tZ-Gee" secondAttribute="bottom" id="bOj-dJ-DrN"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -862,13 +872,13 @@ Today</string>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paramètres de lecture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAT-bL-JsD">
-                                <rect key="frame" x="15" y="403.5" width="399" height="33.5"/>
+                                <rect key="frame" x="15" y="237.5" width="399" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="41v-ZJ-3sc" userLabel="reading settings">
-                                <rect key="frame" x="15" y="452" width="384" height="555"/>
+                                <rect key="frame" x="15" y="286" width="384" height="400"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-HS-HpI" userLabel="frequency">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="216"/>
@@ -901,29 +911,43 @@ Today</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-AG-N6z" userLabel="date">
-                                        <rect key="frame" x="0.0" y="270" width="384" height="245"/>
+                                        <rect key="frame" x="0.0" y="270" width="384" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finis avant :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz1-xT-njc">
-                                                <rect key="frame" x="0.0" y="0.0" width="192" height="245"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Fhn-hw-tCI">
-                                                <rect key="frame" x="192" y="0.0" width="192" height="245"/>
+                                                <rect key="frame" x="192" y="0.0" width="192" height="50"/>
                                             </datePicker>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Fhn-hw-tCI" secondAttribute="bottom" id="0VB-JS-roo"/>
                                             <constraint firstAttribute="bottom" secondItem="Fhn-hw-tCI" secondAttribute="bottom" id="3GD-aH-pbf"/>
                                             <constraint firstAttribute="trailing" secondItem="Fhn-hw-tCI" secondAttribute="trailing" id="Aeb-vc-8j6"/>
+                                            <constraint firstItem="Fhn-hw-tCI" firstAttribute="top" secondItem="WhW-AG-N6z" secondAttribute="top" id="C3r-uH-fwV"/>
                                             <constraint firstItem="Fhn-hw-tCI" firstAttribute="top" secondItem="WhW-AG-N6z" secondAttribute="top" id="ObA-SK-wGE"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-xo-yGB">
-                                        <rect key="frame" x="0.0" y="525" width="384" height="30"/>
-                                        <state key="normal" title="Enregister"/>
+                                        <rect key="frame" x="0.0" y="330" width="384" height="30"/>
+                                        <state key="normal" title="Enregister">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="savePressed:" destination="z03-Hw-aMC" eventType="touchUpInside" id="lTP-Te-mGM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eo4-rd-R8e">
+                                        <rect key="frame" x="0.0" y="370" width="384" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="SUPPRIMER LE LIVRE">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteBookPressed:" destination="z03-Hw-aMC" eventType="touchUpInside" id="Vi2-Z5-y43"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -960,12 +984,13 @@ Today</string>
                         <outlet property="notifTimePicker" destination="G0p-tZ-Gee" id="HY3-F6-UhS"/>
                         <outlet property="pagesPerFrequencyTextfield" destination="E2z-ix-vYq" id="Ket-PQ-88e"/>
                         <segue destination="sFU-fi-M8N" kind="unwind" identifier="unwindFromSettings" unwindAction="unwindLoginWithSegue:" id="Uvq-Cz-Byl"/>
+                        <segue destination="sFU-fi-M8N" kind="unwind" identifier="unwindToLibraryFromSettings" unwindAction="unwindToLibraryWithSegue:" id="uUv-6X-2il"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9v2-GT-PNA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="sFU-fi-M8N" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="-641"/>
+            <point key="canvasLocation" x="1521.7391304347827" y="-641.51785714285711"/>
         </scene>
         <!--Add Pages Controller-->
         <scene sceneID="gQO-LN-5aO">
@@ -977,7 +1002,9 @@ Today</string>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjK-Ce-lUf">
                                 <rect key="frame" x="0.0" y="778" width="414" height="30"/>
-                                <state key="normal" title="Ajouter ce nombre de pages"/>
+                                <state key="normal" title="Ajouter ce nombre de pages">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
                                 <connections>
                                     <action selector="addPages:" destination="ySo-Wi-LZF" eventType="touchUpInside" id="cRR-77-H3f"/>
                                     <segue destination="KoI-ar-7QX" kind="unwind" unwindAction="unwindToLibraryWithSegue:" id="x4m-hq-8qM"/>
@@ -1011,7 +1038,7 @@ Today</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mpQ-5q-MWe"/>
+        <segue reference="C1V-GJ-ylH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>

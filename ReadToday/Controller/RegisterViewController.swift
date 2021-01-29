@@ -21,12 +21,20 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        usernameTextfield.delegate = self
+        emailTextfield.delegate = self
+        passwordTextfield.delegate = self
+        confirmPasswordTextfield.delegate = self
+        
         confirmPasswordTextfield.backgroundColor = .systemBackground
         passwordTextfield.backgroundColor = .systemBackground
         confirmPasswordTextfield.backgroundColor = .systemBackground
         emailTextfield.backgroundColor = .systemBackground
         usernameTextfield.backgroundColor = .systemBackground
         errorLabel.text = ""
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func createAccountPressed(_ sender: UIButton) {
@@ -85,5 +93,14 @@ class RegisterViewController: UIViewController {
             usernameTextfield.backgroundColor = .red
             errorLabel.text = "Veuillez entrer votre nom d'utilisateur."
         }
+    }
+}
+
+//MARK: - Textfield delegate
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

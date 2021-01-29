@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController {
         
         frequencyPickerView.delegate = self
         frequencyPickerView.dataSource = self
+        pagesPerFrequencyTextfield.delegate = self
         
         userID = defaults.string(forKey: "userID")
         guard userID != nil else {
@@ -112,6 +113,21 @@ class SettingsViewController: UIViewController {
             }
         }
     }
+    @IBAction func deleteBookPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Supprimer le livre", message: "Le livre et toutes les données associées seront supprimées. Êtes-vous sûr ?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Oui, supprimer", style: .destructive, handler: { (action: UIAlertAction!) in
+            if let book = self.selectedBook {
+                self.db.collection("books").document(book.bookID).delete()
+            }
+            self.performSegue(withIdentifier: "unwindToLibraryFromSettings", sender: self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Non, annuler", style: .cancel, handler: { (action: UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 //MARK: - Extension PickerView delegate & data source
@@ -142,6 +158,14 @@ extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 }
             }
         }
+    }
+}
+
+//MARK: - textfield delegate
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

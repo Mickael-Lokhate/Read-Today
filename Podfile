@@ -10,4 +10,5 @@ target 'ReadToday' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'AlamofireImage', '~> 4.1'
+  pod 'IQKeyboardManagerSwift'
 end
