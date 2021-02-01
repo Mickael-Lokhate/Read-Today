@@ -25,24 +25,18 @@ class RegisterViewController: UIViewController {
         emailTextfield.delegate = self
         passwordTextfield.delegate = self
         confirmPasswordTextfield.delegate = self
-        
-        confirmPasswordTextfield.backgroundColor = .systemBackground
-        passwordTextfield.backgroundColor = .systemBackground
-        confirmPasswordTextfield.backgroundColor = .systemBackground
-        emailTextfield.backgroundColor = .systemBackground
-        usernameTextfield.backgroundColor = .systemBackground
+    
         errorLabel.text = ""
+        usernameTextfield.layer.cornerRadius = usernameTextfield.frame.height / 2
+        emailTextfield.layer.cornerRadius = emailTextfield.frame.height / 2
+        passwordTextfield.layer.cornerRadius = passwordTextfield.frame.height / 2
+        confirmPasswordTextfield.layer.cornerRadius = confirmPasswordTextfield.frame.height / 2
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
     
     @IBAction func createAccountPressed(_ sender: UIButton) {
-        confirmPasswordTextfield.backgroundColor = .systemBackground
-        passwordTextfield.backgroundColor = .systemBackground
-        confirmPasswordTextfield.backgroundColor = .systemBackground
-        emailTextfield.backgroundColor = .systemBackground
-        usernameTextfield.backgroundColor = .systemBackground
         errorLabel.text = ""
         
         if let username = usernameTextfield.text {
@@ -57,13 +51,13 @@ class RegisterViewController: UIViewController {
                                         self.errorLabel.text = "Impossible de créer un compte, veuillez nous contacter."
                                     case .emailAlreadyInUse:
                                         self.errorLabel.text = "Ce mail est déjà utilisé avec un compte actif."
-                                        self.emailTextfield.backgroundColor = .red
+                                        self.emailTextfield.layer.borderColor = UIColor.red.cgColor
                                     case .invalidEmail:
                                         self.errorLabel.text = "Votre email est invalide, entrez une adresse valide."
-                                        self.emailTextfield.backgroundColor = .red
+                                        self.emailTextfield.layer.borderColor = UIColor.red.cgColor
                                     case .weakPassword:
                                         self.errorLabel.text = "Le mot de passe doit faire un minimum de 6 caractères."
-                                        self.passwordTextfield.backgroundColor = .red
+                                        self.passwordTextfield.layer.borderColor = UIColor.red.cgColor
                                     default:
                                         self.errorLabel.text = "Une erreur s'est produite, veuillez réessayer."
                                     }
@@ -78,19 +72,19 @@ class RegisterViewController: UIViewController {
                             errorLabel.text = "Le mot de passe et la confirmation ne correspondent pas."
                         }
                     } else {
-                        confirmPasswordTextfield.backgroundColor = .red
+                        confirmPasswordTextfield.layer.borderColor = UIColor.red.cgColor
                         errorLabel.text = "Veuillez confirmer votre mot de passe."
                     }
                 } else {
-                    passwordTextfield.backgroundColor = .red
+                    passwordTextfield.layer.borderColor = UIColor.red.cgColor
                     errorLabel.text = "Veuillez entrer votre mot de passe."
                 }
             } else {
-                emailTextfield.backgroundColor = .red
+                emailTextfield.layer.borderColor = UIColor.red.cgColor
                 errorLabel.text = "Veuillez entrer votre email."
             }
         } else {
-            usernameTextfield.backgroundColor = .red
+            usernameTextfield.layer.borderColor = UIColor.red.cgColor
             errorLabel.text = "Veuillez entrer votre nom d'utilisateur."
         }
     }

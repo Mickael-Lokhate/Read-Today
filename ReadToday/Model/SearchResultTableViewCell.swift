@@ -14,6 +14,7 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var searchResultAuthorLabel: UILabel!
     @IBOutlet weak var searchResultPagesLabel: UILabel!
     @IBOutlet weak var searchResultPublishLabel: UILabel!
+    @IBOutlet weak var searchResultView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

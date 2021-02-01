@@ -13,7 +13,6 @@ class BookDetailsViewController: UIViewController {
     
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var totalPagesLabel: UILabel!
     @IBOutlet weak var toReadLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var pagesPerFrequencyLabel: UILabel!
@@ -35,6 +34,7 @@ class BookDetailsViewController: UIViewController {
             performSegue(withIdentifier: "unwindFromDetails", sender: self)
             return
         }
+        
         if let book = book {
             getDataFromFirestore(with: db)
             self.setDetails(with: book)
@@ -93,9 +93,8 @@ class BookDetailsViewController: UIViewController {
             addPagesButton.isUserInteractionEnabled = false
             
         } else {
-            toReadLabel.text = "Il vous reste \(book.pagesLeftToRead) pages à lire."
+            toReadLabel.text = "Il vous reste \(book.pagesLeftToRead) pages sur \(book.totalPages) à lire."
         }
-        totalPagesLabel.text = "Il y a \(book.totalPages) pages."
         let dateFormat = DateFormatter()
         dateFormat.timeStyle = .none
         dateFormat.dateStyle = .medium
@@ -132,7 +131,6 @@ class BookDetailsViewController: UIViewController {
         let pagesPerFrequency = data["pagesPerFrequency"] as! Int
         let tmpDate = data["dateOfEndReading"] as! Timestamp
         let dateOfEndReading = Date(timeIntervalSince1970: TimeInterval(tmpDate.seconds))
-        let isFinished = data["isFinished"] as! Bool
         let isNotificationActive = data["isNotificationActive"] as! Bool
         let tmpNotificationTime = data["notificationTime"] as! Timestamp
         let notificationTime = Date(timeIntervalSince1970: TimeInterval(tmpNotificationTime.seconds))
@@ -149,7 +147,6 @@ class BookDetailsViewController: UIViewController {
                            pagesToReadByFrequency: pagesPerFrequency,
                            dateOfEndReading: dateOfEndReading,
                            bookID: docID,
-                           isFinished: isFinished,
                            isNotificationActive: isNotificationActive,
                            notificationTime: notificationTime)
         book = newBook
@@ -164,7 +161,7 @@ class BookDetailsViewController: UIViewController {
         if let book = book {
             let ref = db.collection("books").document(book.bookID)
                     
-            ref.updateData(["isFinished" : true, "pagesLeftToRead" : 0, "pagesAlreadyRead" : book.totalPages, "dateOfEndReading" : Date()])
+            ref.updateData(["pagesLeftToRead" : 0, "pagesAlreadyRead" : book.totalPages, "dateOfEndReading" : Date()])
         }
     }
 }

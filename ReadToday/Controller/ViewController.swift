@@ -137,14 +137,10 @@ extension ViewController: UITableViewDataSource {
         
         cell.bookTitleLabel.text = book.title
         cell.bookAuthorLabel.text = "de \(book.author)"
-        cell.bookPagesLabel.text = "\(book.pagesAlreadyRead)/\(book.totalPages) pages"
+        cell.bookPagesLabel.text = "\(book.pagesAlreadyRead)/\(book.totalPages) pages (\(book.pagesLeftToRead) restantes)"
         cell.progressBar.progress = (((100.0 * Float(book.pagesAlreadyRead)) / Float(book.totalPages)) / 100.0)
         
-        if indexPath.row % 2 == 0 {
-            cell.bookView.backgroundColor = UIColor(named: "DarkPurple")
-        } else {
-            cell.bookView.backgroundColor = UIColor(named: "LightPurple")
-        }
+        cell.bookView.backgroundColor = UIColor(named: "Purples")
         
         return cell
     }

@@ -33,6 +33,9 @@ class LoginViewController: UIViewController {
             performSegue(withIdentifier: "goToLibrary", sender: self)
             return
         }
+        
+        emailTextField.layer.cornerRadius = emailTextField.frame.height / 2
+        passwordTextField.layer.cornerRadius = passwordTextField.frame.height / 2
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
@@ -59,11 +62,9 @@ class LoginViewController: UIViewController {
                     }
                 }
             } else {
-                passwordTextField.backgroundColor = .red
                 errorLabel.text = "Un mot de passe est nécessaire."
             }
         } else {
-            emailTextField.backgroundColor = .red
             errorLabel.text = "Un email est nécessaire."
         }
     }

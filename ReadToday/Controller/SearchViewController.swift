@@ -137,6 +137,8 @@ extension SearchViewController: UITableViewDataSource {
         cell.searchResultPagesLabel.text = "Il y a \(book.totalPages) pages"
         cell.searchResultPublishLabel.text = "Publié le \(book.publishedDate) par \(book.publisher)"
         
+        cell.searchResultView.backgroundColor = UIColor(named: "Purples")
+        
         return cell
     }
     

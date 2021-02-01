@@ -23,7 +23,13 @@ internal struct Book {
         return totalPages - pagesAlreadyRead
     }
     var bookID: String
-    var isFinished: Bool = false
+    var isFinished: Bool {
+        if pagesLeftToRead == 0 {
+            return true
+        } else {
+            return false
+        }
+    }
     var isNotificationActive: Bool = true
     var notificationTime: Date
     
