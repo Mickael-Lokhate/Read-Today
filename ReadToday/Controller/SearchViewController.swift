@@ -42,31 +42,34 @@ class SearchViewController: UIViewController {
     }
     
     internal func getDataFromGoogleAPI(for searchQuery: String) {
-        let apiKey = "AIzaSyAnr3sKnQFS6yohB28wITQ0j3o7XAN_npE"
-        let urlString = "https://www.googleapis.com/books/v1/volumes?q=\(searchQuery)&key=\(apiKey)"
+        if let apiKey = getDataFromPlist(withName: "API") {
+            let urlString = "https://www.googleapis.com/books/v1/volumes?q=\(searchQuery)&key=\(apiKey)"
 
-        if let url = URL(string: urlString) {
-            let task = URLSession.shared.dataTask(with: url) { (data, response, err) in
-                if let data = data {
-                    var result: GoogleBooksDatas?
-                    do {
-                        result = try JSONDecoder().decode(GoogleBooksDatas.self, from: data)
-                    } catch {
-                        print("Error while decoding datas : \(error)")
-                    }
-                    if let json = result {
-                        self.addBooksToArray(with: json)
-                        DispatchQueue.main.async {
-                            self.searchTableView.reloadData()
+            if let url = URL(string: urlString) {
+                let task = URLSession.shared.dataTask(with: url) { (data, response, err) in
+                    if let data = data {
+                        var result: GoogleBooksDatas?
+                        do {
+                            result = try JSONDecoder().decode(GoogleBooksDatas.self, from: data)
+                        } catch {
+                            print("Error while decoding datas : \(error)")
                         }
+                        if let json = result {
+                            self.addBooksToArray(with: json)
+                            DispatchQueue.main.async {
+                                self.searchTableView.reloadData()
+                            }
+                        }
+                    } else {
+                        print("Error when getting datas")
                     }
-                } else {
-                    print("Error when getting datas")
                 }
+                task.resume()
+            } else {
+                print("Error with the URL")
             }
-            task.resume()
         } else {
-            print("Error with the URL")
+            print("erreur api key")
         }
     }
     
@@ -161,4 +164,17 @@ extension SearchViewController: UISearchBarDelegate {
             searchBar.resignFirstResponder()
         }
     }
+}
+
+fileprivate func getDataFromPlist(withName name: String) -> String? {
+    if let path = Bundle.main.path(forResource: name, ofType: "plist"),
+       let xml = FileManager.default.contents(atPath: path){
+        do {
+            let result = try PropertyListDecoder().decode(API.self, from: xml)
+            return result.googleBooksKey
+        } catch {
+            print("Erreur recuperation de la cle api : \(error)")
+        }
+    }
+    return nil
 }
