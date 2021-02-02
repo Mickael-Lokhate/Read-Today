@@ -17,6 +17,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     var userID: String?
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,11 @@ class RegisterViewController: UIViewController {
                                     self.userID = result?.user.uid
                                     let defaults = UserDefaults.standard
                                     defaults.setValue(self.userID, forKey: "userID")
+                                    
+                                    if let id = self.userID {
+                                        let newUser = Users(userID: id, username: username, email: email)
+                                        addToDatabase(newUser, with: self.db)
+                                    }
                                     self.performSegue(withIdentifier: "goToLibraryFromRegister", sender: self)
                                 }
                             }
@@ -88,6 +94,13 @@ class RegisterViewController: UIViewController {
             errorLabel.text = "Veuillez entrer votre nom d'utilisateur."
         }
     }
+}
+
+private func addToDatabase(_ newUser: Users, with db: Firestore) {
+    db.collection("users").document(newUser.userID).setData([
+        "username" : newUser.username,
+        "email" : newUser.email
+    ])
 }
 
 //MARK: - Textfield delegate
