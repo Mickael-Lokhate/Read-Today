@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
-        errorLabel.text = ""
+        
         userID = defaults.string(forKey: "userID")
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -34,6 +34,17 @@ class LoginViewController: UIViewController {
             return
         }
         
+        errorLabel.text = ""
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        emailTextField.layer.cornerRadius = emailTextField.frame.height / 2
+        passwordTextField.layer.cornerRadius = passwordTextField.frame.height / 2
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        errorLabel.text = ""
         emailTextField.layer.cornerRadius = emailTextField.frame.height / 2
         passwordTextField.layer.cornerRadius = passwordTextField.frame.height / 2
     }

@@ -1897,7 +1897,7 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
         #endif
 
         #if swift(>=4.2)
-        let statusBarUserInfoKey    = UIApplication.statusBarOrientationUserInfoKey
+         let statusBarUserInfoKey    = UIApplication.statusBarOrientationUserInfoKey
         #else
         let statusBarUserInfoKey    = UIApplicationStatusBarOrientationUserInfoKey
         #endif

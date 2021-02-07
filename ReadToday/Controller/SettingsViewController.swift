@@ -10,8 +10,6 @@ import FirebaseFirestore
 
 class SettingsViewController: UIViewController {
     
-    @IBOutlet weak var notifSwitch: UISwitch!
-    @IBOutlet weak var notifTimePicker: UIDatePicker!
     @IBOutlet weak var frequencyPickerView: UIPickerView!
     @IBOutlet weak var pagesPerFrequencyTextfield: UITextField!
     @IBOutlet weak var datePickerView: UIDatePicker!
@@ -37,7 +35,7 @@ class SettingsViewController: UIViewController {
         
         if let book = selectedBook {
             showDetails(of: book)
-            pagesPerFrequencyTextfield.addTarget(self, action: #selector(pagesPerFrequencyChanged), for: .editingDidEndOnExit)
+            pagesPerFrequencyTextfield.addTarget(self, action: #selector(pagesPerFrequencyChanged), for: .editingDidEnd)
             datePickerView.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
             let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
             view.addGestureRecognizer(tap)
@@ -62,7 +60,7 @@ class SettingsViewController: UIViewController {
                         book.setDate(for: book.readingFrequency, and: pages)
                         datePickerView.date = book.dateOfEndReading
                         selectedBook?.pagesToReadByFrequency = pages
-                        pagesPerFrequencyTextfield.backgroundColor = .systemBackground
+                        pagesPerFrequencyTextfield.backgroundColor = UIColor(named: "ReversePurple")
                     } else {
                         pagesPerFrequencyTextfield.backgroundColor = .red
                     }
@@ -73,7 +71,6 @@ class SettingsViewController: UIViewController {
     
     private func showDetails(of book: Book) {
         datePickerView.date = book.dateOfEndReading
-        notifTimePicker.date = book.notificationTime
         pagesPerFrequencyTextfield.text = String(book.pagesToReadByFrequency)
         var i = 0;
         for frequency in dataReadingFrequency {
@@ -87,29 +84,28 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func savePressed(_ sender: UIButton) {
-        let pagesToRead = selectedBook?.pagesToReadByFrequency ?? 5
         let frequency = dataReadingFrequency[frequencyPickerView.selectedRow(inComponent: 0)]
         let date = datePickerView.date
-        let isNotificationActive = notifSwitch.isOn
-        let notificationTime = notifTimePicker.date
+        let pagesToRead = Int(pagesPerFrequencyTextfield.text!)
         
         if let book = selectedBook {
-            let newBook = Book(title: book.title,
-                               author: book.author,
-                               totalPages: book.totalPages,
-                               description: book.description,
-                               publisher: book.publisher,
-                               publishedDate: book.publishedDate,
-                               imageLink: book.imageLink,
-                               pagesAlreadyRead: 0,
-                               readingFrequency: frequency,
-                               pagesToReadByFrequency: pagesToRead,
-                               dateOfEndReading: date,
-                               bookID: book.bookID,
-                               isNotificationActive: isNotificationActive,
-                               notificationTime: notificationTime)
-            if let userID = userID {
-                updateDatabase(newBook, with: db, for: userID)
+            if let pagesToRead = pagesToRead {
+                let newBook = Book(title: book.title,
+                                   author: book.author,
+                                   totalPages: book.totalPages,
+                                   description: book.description,
+                                   publisher: book.publisher,
+                                   publishedDate: book.publishedDate,
+                                   imageLink: book.imageLink,
+                                   pagesAlreadyRead: 0,
+                                   readingFrequency: frequency,
+                                   pagesToReadByFrequency: pagesToRead,
+                                   dateOfEndReading: date,
+                                   bookID: book.bookID)
+                if let userID = userID {
+                    updateDatabase(newBook, with: db, for: userID)
+                    performSegue(withIdentifier: "unwindToLibraryFromSettings", sender: self)
+                }
             }
         }
     }
@@ -175,9 +171,7 @@ private func updateDatabase(_ newBook: Book, with db: Firestore, for userID: Str
     bookRef.updateData([
                         "readingFrequency": newBook.readingFrequency,
                         "pagesPerFrequency": newBook.pagesToReadByFrequency,
-                        "dateOfEndReading": newBook.dateOfEndReading,
-                        "isNotificationActive": newBook.isNotificationActive,
-                        "notificationTime": newBook.notificationTime]) { err in
+                        "dateOfEndReading": newBook.dateOfEndReading]) { err in
         if let err = err {
             print("Error updating document : \(err)")
         }

@@ -169,7 +169,7 @@
                                                 </label>
                                                 <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDg-MK-zul">
                                                     <rect key="frame" x="78" y="81" width="326" height="4"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="progressTintColor" name="CallColor"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32 pages sur 114" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pO1-Ue-mQL">
@@ -582,17 +582,17 @@ Today</string>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TTs-SB-yEJ" userLabel="form stack view">
-                                <rect key="frame" x="15" y="667" width="384" height="195"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TTs-SB-yEJ" userLabel="form stack view">
+                                <rect key="frame" x="15" y="712" width="384" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFW-1a-FiX">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mon email" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-Z2-bUp">
-                                        <rect key="frame" x="0.0" y="40" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="5" width="384" height="35"/>
                                         <color key="backgroundColor" name="ReversePurple"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="27s-Z1-zt6"/>
@@ -606,7 +606,7 @@ Today</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mon mot de passe" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="nDJ-71-McI">
-                                        <rect key="frame" x="0.0" y="80" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="45" width="384" height="35"/>
                                         <color key="backgroundColor" name="ReversePurple"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="HAN-P0-fAf"/>
@@ -620,7 +620,7 @@ Today</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0H-S6-4Ho">
-                                        <rect key="frame" x="0.0" y="120" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="85" width="384" height="30"/>
                                         <state key="normal" title="Je me connecte">
                                             <color key="titleColor" name="AccentColor"/>
                                         </state>
@@ -629,7 +629,7 @@ Today</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMk-5A-65x">
-                                        <rect key="frame" x="0.0" y="160" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="120" width="384" height="30"/>
                                         <state key="normal" title="Je créer un compte">
                                             <color key="titleColor" name="AccentColor"/>
                                         </state>
@@ -886,67 +886,14 @@ Today</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMy-1m-mgN">
-                                <rect key="frame" x="15" y="93" width="399" height="33.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <color key="textColor" name="LabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZRn-7t-XEo">
-                                <rect key="frame" x="15" y="141.5" width="384" height="81"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-Rf-vqS" userLabel="active notif">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activer les notifications : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-SY-sja">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="LabelColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gL7-gM-I6i">
-                                                <rect key="frame" x="335" y="0.0" width="51" height="31"/>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tge-Zw-SCP" userLabel="hour notif">
-                                        <rect key="frame" x="0.0" y="31" width="384" height="50"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heure de notification :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vax-hn-nh3">
-                                                <rect key="frame" x="0.0" y="15" width="192" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="LabelColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="G0p-tZ-Gee">
-                                                <rect key="frame" x="192" y="0.0" width="192" height="50"/>
-                                                <color key="tintColor" name="LabelColor"/>
-                                            </datePicker>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="G0p-tZ-Gee" firstAttribute="top" secondItem="Tge-Zw-SCP" secondAttribute="top" id="5lM-96-7gw"/>
-                                            <constraint firstAttribute="bottom" secondItem="G0p-tZ-Gee" secondAttribute="bottom" id="bOj-dJ-DrN"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="uTg-Rf-vqS" secondAttribute="trailing" id="KFm-6l-8KL"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tge-Zw-SCP" secondAttribute="bottom" id="QMZ-zO-964"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tge-Zw-SCP" secondAttribute="trailing" id="mSj-an-aHM"/>
-                                    <constraint firstItem="Tge-Zw-SCP" firstAttribute="top" secondItem="uTg-Rf-vqS" secondAttribute="bottom" id="mzY-2g-Ozl"/>
-                                    <constraint firstItem="uTg-Rf-vqS" firstAttribute="top" secondItem="ZRn-7t-XEo" secondAttribute="top" id="rSG-03-hIE"/>
-                                    <constraint firstItem="uTg-Rf-vqS" firstAttribute="leading" secondItem="ZRn-7t-XEo" secondAttribute="leading" id="xpP-bT-pCO"/>
-                                    <constraint firstItem="Tge-Zw-SCP" firstAttribute="leading" secondItem="ZRn-7t-XEo" secondAttribute="leading" id="ywM-9y-GvI"/>
-                                </constraints>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paramètres de lecture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAT-bL-JsD">
-                                <rect key="frame" x="15" y="237.5" width="399" height="33.5"/>
+                                <rect key="frame" x="15" y="88" width="399" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="41v-ZJ-3sc" userLabel="reading settings">
-                                <rect key="frame" x="15" y="286" width="384" height="576"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="41v-ZJ-3sc" userLabel="reading settings">
+                                <rect key="frame" x="15" y="136.5" width="384" height="725.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-HS-HpI" userLabel="frequency">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="216"/>
@@ -964,7 +911,7 @@ Today</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="azd-3Z-JkO" userLabel="pages">
-                                        <rect key="frame" x="0.0" y="226" width="384" height="34"/>
+                                        <rect key="frame" x="0.0" y="231" width="384" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pages à lire :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQd-LA-GGL">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="34"/>
@@ -974,23 +921,23 @@ Today</string>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrer un chiffre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2z-ix-vYq">
                                                 <rect key="frame" x="192" y="0.0" width="192" height="34"/>
-                                                <color key="backgroundColor" name="Purples"/>
+                                                <color key="backgroundColor" name="ReversePurple"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-AG-N6z" userLabel="date">
-                                        <rect key="frame" x="0.0" y="270" width="384" height="50"/>
+                                        <rect key="frame" x="0.0" y="280" width="384" height="133.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finis avant :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz1-xT-njc">
-                                                <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="133.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Fhn-hw-tCI">
-                                                <rect key="frame" x="192" y="0.0" width="192" height="50"/>
+                                                <rect key="frame" x="192" y="0.0" width="192" height="133.5"/>
                                                 <color key="tintColor" name="LabelColor"/>
                                             </datePicker>
                                         </subviews>
@@ -1002,8 +949,8 @@ Today</string>
                                             <constraint firstItem="Fhn-hw-tCI" firstAttribute="top" secondItem="WhW-AG-N6z" secondAttribute="top" id="ObA-SK-wGE"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-xo-yGB">
-                                        <rect key="frame" x="0.0" y="330" width="384" height="206"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-xo-yGB">
+                                        <rect key="frame" x="0.0" y="428.5" width="384" height="252"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="ENREGISTRER">
                                             <color key="titleColor" name="CallColor"/>
@@ -1013,7 +960,7 @@ Today</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eo4-rd-R8e">
-                                        <rect key="frame" x="0.0" y="546" width="384" height="30"/>
+                                        <rect key="frame" x="0.0" y="695.5" width="384" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="SUPPRIMER LE LIVRE">
                                             <color key="titleColor" name="CallColor"/>
@@ -1034,18 +981,12 @@ Today</string>
                         <viewLayoutGuide key="safeArea" id="KSh-Hj-Dvo"/>
                         <color key="backgroundColor" name="Purples"/>
                         <constraints>
-                            <constraint firstItem="HMy-1m-mgN" firstAttribute="top" secondItem="KSh-Hj-Dvo" secondAttribute="top" constant="5" id="Fmv-Hg-Dg8"/>
+                            <constraint firstItem="XAT-bL-JsD" firstAttribute="top" secondItem="KSh-Hj-Dvo" secondAttribute="top" id="MgH-8b-Kdn"/>
                             <constraint firstItem="XAT-bL-JsD" firstAttribute="leading" secondItem="KSh-Hj-Dvo" secondAttribute="leading" constant="15" id="MlQ-VN-Twd"/>
                             <constraint firstItem="KSh-Hj-Dvo" firstAttribute="trailing" secondItem="XAT-bL-JsD" secondAttribute="trailing" id="RXp-PR-TaW"/>
-                            <constraint firstItem="KSh-Hj-Dvo" firstAttribute="trailing" secondItem="HMy-1m-mgN" secondAttribute="trailing" id="a8h-y6-mQD"/>
                             <constraint firstItem="KSh-Hj-Dvo" firstAttribute="trailing" secondItem="41v-ZJ-3sc" secondAttribute="trailing" constant="15" id="ghJ-2j-Q31"/>
                             <constraint firstItem="KSh-Hj-Dvo" firstAttribute="bottom" secondItem="41v-ZJ-3sc" secondAttribute="bottom" id="hK2-od-2Pr"/>
-                            <constraint firstItem="ZRn-7t-XEo" firstAttribute="top" secondItem="HMy-1m-mgN" secondAttribute="bottom" constant="15" id="kfL-Hh-9Wz"/>
                             <constraint firstItem="41v-ZJ-3sc" firstAttribute="leading" secondItem="KSh-Hj-Dvo" secondAttribute="leading" constant="15" id="oQn-N7-uEN"/>
-                            <constraint firstItem="ZRn-7t-XEo" firstAttribute="leading" secondItem="KSh-Hj-Dvo" secondAttribute="leading" constant="15" id="vId-FE-LD8"/>
-                            <constraint firstItem="XAT-bL-JsD" firstAttribute="top" secondItem="ZRn-7t-XEo" secondAttribute="bottom" constant="15" id="vZH-vI-1zq"/>
-                            <constraint firstItem="KSh-Hj-Dvo" firstAttribute="trailing" secondItem="ZRn-7t-XEo" secondAttribute="trailing" constant="15" id="x6N-qi-H7F"/>
-                            <constraint firstItem="HMy-1m-mgN" firstAttribute="leading" secondItem="KSh-Hj-Dvo" secondAttribute="leading" constant="15" id="xQU-yI-mXY"/>
                             <constraint firstItem="41v-ZJ-3sc" firstAttribute="top" secondItem="XAT-bL-JsD" secondAttribute="bottom" constant="15" id="y57-mr-3MP"/>
                         </constraints>
                     </view>
@@ -1053,8 +994,6 @@ Today</string>
                     <connections>
                         <outlet property="datePickerView" destination="Fhn-hw-tCI" id="o5x-AW-fZe"/>
                         <outlet property="frequencyPickerView" destination="eT7-FB-Vdm" id="Uqx-fZ-siZ"/>
-                        <outlet property="notifSwitch" destination="gL7-gM-I6i" id="rCa-2d-92X"/>
-                        <outlet property="notifTimePicker" destination="G0p-tZ-Gee" id="HY3-F6-UhS"/>
                         <outlet property="pagesPerFrequencyTextfield" destination="E2z-ix-vYq" id="Ket-PQ-88e"/>
                         <segue destination="sFU-fi-M8N" kind="unwind" identifier="unwindFromSettings" unwindAction="unwindLoginWithSegue:" id="Uvq-Cz-Byl"/>
                         <segue destination="sFU-fi-M8N" kind="unwind" identifier="unwindToLibraryFromSettings" unwindAction="unwindToLibraryWithSegue:" id="uUv-6X-2il"/>
@@ -1118,25 +1057,25 @@ Today</string>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="noImage" width="150" height="250"/>
         <namedColor name="AccentColor">
-            <color red="0.24699999392032623" green="0.60000002384185791" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.79199999570846558" green="0.94099998474121094" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CallColor">
-            <color red="0.60000002384185791" green="0.18400000035762787" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.79199999570846558" green="0.94099998474121094" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkPurple">
             <color red="0.57200002670288086" green="0.48100000619888306" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="LabelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.79600000381469727" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PlaceholderColor">
-            <color red="0.64800000190734863" green="0.65499997138977051" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.64800000190734863" green="0.65499997138977051" blue="0.65499997138977051" alpha="0.80400002002716064" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Purples">
-            <color red="0.81699997186660767" green="0.77899998426437378" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.75300002098083496" green="0.40799999237060547" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="ReversePurple">
-            <color red="0.57200002670288086" green="0.48100000619888306" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.64200001955032349" green="0.12600000202655792" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,7 +7,9 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseMessaging
 import AlamofireImage
+import UserNotifications
 
 class AddBookViewController: UIViewController {
     
@@ -41,7 +43,7 @@ class AddBookViewController: UIViewController {
         if var book = selectedBook {
             book.setDate(for: book.readingFrequency)
             showBookDetails(of: book)
-            pagesPerFrequencyTextField.addTarget(self, action: #selector(pagesPerFrequencyChanged), for: .editingDidEndOnExit)
+            pagesPerFrequencyTextField.addTarget(self, action: #selector(pagesPerFrequencyChanged), for: .editingDidEnd)
             datePickerView.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
             let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
             view.addGestureRecognizer(tap)
@@ -103,9 +105,7 @@ class AddBookViewController: UIViewController {
                                readingFrequency: frequency,
                                pagesToReadByFrequency: pagesToRead,
                                dateOfEndReading: date,
-                               bookID: book.bookID,
-                               isNotificationActive: book.isNotificationActive,
-                               notificationTime: book.setDefaultNotificationTime())
+                               bookID: book.bookID)
             if let userID = userID {
                 addToDatabase(newBook, with: db, for: userID)
             }
@@ -159,8 +159,6 @@ private func addToDatabase(_ newBook: Book, with db: Firestore, for userID: Stri
         "pagesPerFrequency": newBook.pagesToReadByFrequency,
         "dateOfEndReading": newBook.dateOfEndReading,
         "userId": userID,
-        "isFinished": newBook.isFinished,
-        "isNotificationActive": newBook.isNotificationActive,
-        "notificationTime": newBook.notificationTime
+        "isFinished": newBook.isFinished
     ])
 }

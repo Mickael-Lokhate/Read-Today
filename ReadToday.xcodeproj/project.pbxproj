@@ -36,6 +36,7 @@
 		C4606EFD25C8B04A000A8D55 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		C4606F0025C8B852000A8D55 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C4606F0325C9F530000A8D55 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		C4606F0625CB2217000A8D55 /* ReadToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadToday.entitlements; sourceTree = "<group>"; };
 		C4B3CC8E25ACB10C0084C295 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		C4B3CC9125ADC6C90084C295 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		C4B3CC9425ADE5B90084C295 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		C4EC479025A5EF20007B55DB /* ReadToday */ = {
 			isa = PBXGroup;
 			children = (
+				C4606F0625CB2217000A8D55 /* ReadToday.entitlements */,
 				C4EC479125A5EF20007B55DB /* AppDelegate.swift */,
 				C4EC479325A5EF20007B55DB /* SceneDelegate.swift */,
 				C4EC47AA25AC8141007B55DB /* Model */,
@@ -439,6 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReadToday/ReadToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JHC5539BP5;
 				INFOPLIST_FILE = ReadToday/Info.plist;
@@ -460,6 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReadToday/ReadToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JHC5539BP5;
 				INFOPLIST_FILE = ReadToday/Info.plist;

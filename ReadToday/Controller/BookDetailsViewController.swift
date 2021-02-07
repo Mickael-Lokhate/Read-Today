@@ -20,7 +20,7 @@ class BookDetailsViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var finishedButton: UIButton!
     @IBOutlet weak var addPagesButton: UIButton!
-    
+        
     var book: Book?
     private let db = Firestore.firestore()
     var userID: String?
@@ -131,9 +131,6 @@ class BookDetailsViewController: UIViewController {
         let pagesPerFrequency = data["pagesPerFrequency"] as! Int
         let tmpDate = data["dateOfEndReading"] as! Timestamp
         let dateOfEndReading = Date(timeIntervalSince1970: TimeInterval(tmpDate.seconds))
-        let isNotificationActive = data["isNotificationActive"] as! Bool
-        let tmpNotificationTime = data["notificationTime"] as! Timestamp
-        let notificationTime = Date(timeIntervalSince1970: TimeInterval(tmpNotificationTime.seconds))
         
         let newBook = Book(title: title,
                            author: author,
@@ -146,9 +143,7 @@ class BookDetailsViewController: UIViewController {
                            readingFrequency: readingFrequency,
                            pagesToReadByFrequency: pagesPerFrequency,
                            dateOfEndReading: dateOfEndReading,
-                           bookID: docID,
-                           isNotificationActive: isNotificationActive,
-                           notificationTime: notificationTime)
+                           bookID: docID)
         book = newBook
         
     }

@@ -234,6 +234,9 @@ PODS:
   - Firebase/Firestore (7.2.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 7.2.0)
+  - Firebase/Messaging (7.2.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 7.2.0)
   - FirebaseAnalytics (7.2.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
@@ -274,6 +277,18 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (7.5.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+  - FirebaseMessaging (7.2.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstanceID (~> 7.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Reachability (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
   - GoogleAppMeasurement (7.2.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
@@ -340,6 +355,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
+  - Firebase/Messaging
   - IQKeyboardManagerSwift
 
 SPEC REPOS:
@@ -355,6 +371,8 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseFirestore
     - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -378,6 +396,8 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 2d508e12e77e9691ca67d1669b91ee80f0985b29
   FirebaseFirestore: 526c70e247f550206e5c02a7bafc264588847499
   FirebaseInstallations: 30646fc9a61c6f4ee3cd7a8b7231721842b40c95
+  FirebaseInstanceID: 47fcb3b70d6349cfd471f430b01bbd01a7698e8f
+  FirebaseMessaging: 7091222bfac24ca89c569c3c59e58390311e487f
   GoogleAppMeasurement: 57a0df93dc2feb5176b1bac06012dbd725191ba5
   GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
@@ -389,6 +409,6 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: b6eaac40f1be93f8e83796e43a378aff4d673cec
+PODFILE CHECKSUM: 20ec811536d9418fe12d47dfe5b7dd05563d0c4f
 
 COCOAPODS: 1.10.0

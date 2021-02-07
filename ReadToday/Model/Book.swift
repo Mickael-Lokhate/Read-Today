@@ -30,13 +30,7 @@ internal struct Book {
             return false
         }
     }
-    var isNotificationActive: Bool = true
-    var notificationTime: Date
     
-    func setDefaultNotificationTime() -> Date{
-            return Date()
-    }
-
     mutating func setPagesToRead(for date: Date, with frequency: String = "Tous les jours"){
         let daysNbr = Int(ceil(Date().distance(to: date) / 86400))
         let weekNbr = Int(ceil(Double(daysNbr) / 7.0))

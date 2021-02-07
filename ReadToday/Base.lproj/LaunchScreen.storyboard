@@ -29,14 +29,14 @@ Today</string>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Purples"/>
                         <constraints>
-                            <constraint firstItem="Ow2-hz-ms6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QIu-2w-Hvu"/>
-                            <constraint firstItem="Ow2-hz-ms6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uJP-l6-T5Q"/>
+                            <constraint firstItem="Ow2-hz-ms6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2SC-Kd-TxB"/>
+                            <constraint firstItem="Ow2-hz-ms6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="aFn-d4-t95"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
@@ -44,7 +44,7 @@ Today</string>
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Purples">
-            <color red="0.8168949485" green="0.77884733679999996" blue="0.96865290400000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.75294117647058822" green="0.40784313725490196" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
