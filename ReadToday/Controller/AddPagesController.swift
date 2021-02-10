@@ -44,9 +44,10 @@ class AddPagesController: UIViewController {
     }
     
     @IBAction func addPages(_ sender: UIButton) {
-        if let book = selectedBook {
+        if var book = selectedBook {
             let ref = db.collection("books").document(book.bookID)
             let selectedNbr = (pagesPickerView.selectedRow(inComponent: 0)) + 1
+            
             
             ref.getDocument { (doc, error) in
                 if let error = error {
@@ -60,8 +61,9 @@ class AddPagesController: UIViewController {
                 }
             }
             pagesRead += Int(selectedNbr)
+            book.setDate(for: book.readingFrequency)
             
-            ref.updateData(["pagesAlreadyRead" : pagesRead])
+            ref.updateData(["pagesAlreadyRead" : pagesRead, "dateOfEndReading" : book.dateOfEndReading])
             dismiss(animated: true, completion: nil)
         } else {
             print("Erreur")

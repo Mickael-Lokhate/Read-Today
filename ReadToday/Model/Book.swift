@@ -37,32 +37,32 @@ internal struct Book {
         let monthNbr = Int(ceil(Double(weekNbr) / 4.0))
         switch frequency {
         case "Tous les jours":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(daysNbr)))
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(daysNbr)))
         case "1 fois/semaines":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(weekNbr)))
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(weekNbr)))
         case "2 fois/semaines":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(weekNbr)) / 2)
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(weekNbr)) / 2)
         case "3 fois/semaines":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(weekNbr)) / 3)
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(weekNbr)) / 3)
         case "4 fois/semaines":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(weekNbr)) / 4)
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(weekNbr)) / 4)
         case "5 fois/semaines":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(weekNbr)) / 5)
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(weekNbr)) / 5)
         case "6 fois/semaines":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(weekNbr)) / 6)
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(weekNbr)) / 6)
         case "1 fois/mois":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(monthNbr)))
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(monthNbr)))
         case "2 fois/mois":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(monthNbr)) / 2)
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(monthNbr)) / 2)
         case "3 fois/mois":
-            self.pagesToReadByFrequency = Int(ceil(Double(totalPages) / Double(monthNbr)) / 3)
+            self.pagesToReadByFrequency = Int(ceil(Double(pagesLeftToRead) / Double(monthNbr)) / 3)
         default:
             self.pagesToReadByFrequency = 5
         }
     }
     
     mutating func setDate(for stringFrequency: String, and pages: Int = 5){
-        let frequency = totalPages / pages
+        let frequency = pagesLeftToRead / pages
         switch stringFrequency {
         case "Tous les jours":
             self.dateOfEndReading = Date(timeIntervalSinceNow: TimeInterval(frequency * 86400))
