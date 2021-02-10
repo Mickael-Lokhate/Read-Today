@@ -41,7 +41,7 @@ Today</string>
     </scenes>
     <resources>
         <namedColor name="LabelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.79600000381469727" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Purples">
             <color red="0.75294117647058822" green="0.40784313725490196" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

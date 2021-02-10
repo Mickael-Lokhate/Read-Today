@@ -68,7 +68,7 @@ class AddBookViewController: UIViewController {
                         book.setDate(for: book.readingFrequency, and: pages)
                         datePickerView.date = book.dateOfEndReading
                         selectedBook?.pagesToReadByFrequency = pages
-                        pagesPerFrequencyTextField.backgroundColor = .systemBackground
+                        pagesPerFrequencyTextField.backgroundColor = UIColor(named: "ReversePurple")
                     } else {
                         pagesPerFrequencyTextField.backgroundColor = .red
                     }

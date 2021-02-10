@@ -470,7 +470,7 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="Entre 1 et le nombre de pages du livre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqz-L8-FkT">
                                                         <rect key="frame" x="209.5" y="0.0" width="204.5" height="34"/>
-                                                        <color key="backgroundColor" name="Purples"/>
+                                                        <color key="backgroundColor" name="ReversePurple"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
                                                     </textField>
@@ -887,13 +887,13 @@ Today</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paramètres de lecture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAT-bL-JsD">
-                                <rect key="frame" x="15" y="88" width="399" height="33.5"/>
+                                <rect key="frame" x="15" y="88" width="399" height="195.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="41v-ZJ-3sc" userLabel="reading settings">
-                                <rect key="frame" x="15" y="136.5" width="384" height="725.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="41v-ZJ-3sc" userLabel="reading settings">
+                                <rect key="frame" x="15" y="298.5" width="384" height="563.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-HS-HpI" userLabel="frequency">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="216"/>
@@ -911,7 +911,7 @@ Today</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="azd-3Z-JkO" userLabel="pages">
-                                        <rect key="frame" x="0.0" y="231" width="384" height="34"/>
+                                        <rect key="frame" x="0.0" y="246" width="384" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pages à lire :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQd-LA-GGL">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="34"/>
@@ -928,7 +928,7 @@ Today</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-AG-N6z" userLabel="date">
-                                        <rect key="frame" x="0.0" y="280" width="384" height="133.5"/>
+                                        <rect key="frame" x="0.0" y="310" width="384" height="133.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finis avant :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz1-xT-njc">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="133.5"/>
@@ -950,7 +950,7 @@ Today</string>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-xo-yGB">
-                                        <rect key="frame" x="0.0" y="428.5" width="384" height="252"/>
+                                        <rect key="frame" x="0.0" y="473.5" width="384" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="ENREGISTRER">
                                             <color key="titleColor" name="CallColor"/>
@@ -960,7 +960,7 @@ Today</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eo4-rd-R8e">
-                                        <rect key="frame" x="0.0" y="695.5" width="384" height="30"/>
+                                        <rect key="frame" x="0.0" y="533.5" width="384" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="SUPPRIMER LE LIVRE">
                                             <color key="titleColor" name="CallColor"/>
@@ -1060,7 +1060,7 @@ Today</string>
             <color red="0.79199999570846558" green="0.94099998474121094" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CallColor">
-            <color red="0.79199999570846558" green="0.94099998474121094" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.79215686269999996" green="0.94117647059999998" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkPurple">
             <color red="0.57200002670288086" green="0.48100000619888306" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1072,7 +1072,7 @@ Today</string>
             <color red="0.64800000190734863" green="0.65499997138977051" blue="0.65499997138977051" alpha="0.80400002002716064" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Purples">
-            <color red="0.75300002098083496" green="0.40799999237060547" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.75294117647058822" green="0.40784313725490196" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="ReversePurple">
             <color red="0.64200001955032349" green="0.12600000202655792" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

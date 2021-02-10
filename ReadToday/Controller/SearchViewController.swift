@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
     
     internal func getDataFromGoogleAPI(for searchQuery: String) {
         if let apiKey = getDataFromPlist(withName: "API") {
-            let urlString = "https://www.googleapis.com/books/v1/volumes?q=\(searchQuery)&key=\(apiKey)"
+            let urlString = "https://www.googleapis.com/books/v1/volumes?q=\(searchQuery)&maxResults=40&key=\(apiKey)"
 
             if let url = URL(string: urlString) {
                 let task = URLSession.shared.dataTask(with: url) { (data, response, err) in
